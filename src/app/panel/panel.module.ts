@@ -1,6 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {RouterModule, Routes} from '@angular/router';
+
+import {StoreModule} from '@ngrx/store';
+import {reducers} from './store/reducers/panel.reducers';
+
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatButtonModule} from '@angular/material/button';
 
 import { UserComponent } from './user/user.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -22,7 +28,10 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    StoreModule.forFeature('panel', {...reducers}),
+    MatSidenavModule,
+    MatButtonModule
   ]
 })
 export class PanelModule { }

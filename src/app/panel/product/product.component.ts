@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Store} from '@ngrx/store';
 
 @Component({
   selector: 'app-product',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: Store<any>) { }
 
   ngOnInit() {
+    this.store.dispatch({type: 'LOAD_USERS'});
+    this.store.subscribe((res: any) => {
+      console.log(res);
+    });
   }
 
 }

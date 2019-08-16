@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 
 import {environment} from '../../environments/environment';
 
-import { User } from '../_models/user';
+import { AdminUser } from '../_models/adminUser';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class AuthenticationService {
     return localStorage.getItem('token');
   }
 
-  login(userData): Observable<User> {
-    return this.http.post<User>(`${environment.API}/api/auth/login`, userData);
+  login(userData): Observable<AdminUser> {
+    return this.http.post<AdminUser>(`${environment.API}/api/auth/login`, userData);
   }
 }
