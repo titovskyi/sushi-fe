@@ -3,15 +3,18 @@ import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 
 import {StoreModule} from '@ngrx/store';
+import {EffectsModule} from '@ngrx/effects';
 import {reducers} from './store/reducers/panel.reducers';
 
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatButtonModule} from '@angular/material/button';
+import {MatTableModule} from '@angular/material/table';
 
-import { UserComponent } from './user/user.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { AdminComponent } from './admin/admin.component';
-import { ProductComponent } from './product/product.component';
+import {UserComponent} from './user/user.component';
+import {SidebarComponent} from './sidebar/sidebar.component';
+import {AdminComponent} from './admin/admin.component';
+import {ProductComponent} from './product/product.component';
+import {UsersEffects} from './store/effects/users.effects';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'products'},
@@ -30,8 +33,10 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature('panel', {...reducers}),
+    EffectsModule.forFeature(([UsersEffects])),
     MatSidenavModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule
   ]
 })
 export class PanelModule { }

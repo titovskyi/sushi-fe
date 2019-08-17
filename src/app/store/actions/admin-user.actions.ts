@@ -1,5 +1,6 @@
 import {Action} from '@ngrx/store';
 import {AdminUser, AdminUserLoginInterface} from '../../_models/adminUser';
+import {Router} from '@angular/router';
 
 export enum AdminUserActionTypes {
   LOGIN_ADMIN_USER = '[AdminUser] Load Admin User',
@@ -15,7 +16,13 @@ export class Login implements Action {
 export class LoginSuccess implements Action {
   readonly type = AdminUserActionTypes.LOGIN_ADMIN_USER_SUCCESS;
 
-  constructor(public payload: AdminUser) {}
+  constructor(
+    public payload: AdminUser
+  ) {
+    localStorage.setItem('token', payload.token);
+    localStorage.setItem('role', payload.role);
+    localStorage.setItem('expire', payload.expire);
+  }
 }
 
 export class LoginFail implements Action {

@@ -1,8 +1,11 @@
 <div class="side-menu">
   <div class="side-menu__item">
-    <a mat-flat-button routerLink="/panel/products" class="side-menu__link">Products</a>
+    <a mat-flat-button routerLink="/panel/products" class="side-menu__link">Товары</a>
+  </div>
+  <div class="side-menu__item" *ngIf="userRole === 'ADMIN'">
+    <a mat-flat-button routerLink="/panel/users" class="side-menu__link">Админы</a>
   </div>
   <div class="side-menu__item">
-    <a mat-flat-button routerLink="/panel/users" class="side-menu__link">Users</a>
+    <a mat-flat-button routerLink="/panel/comments" class="side-menu__link">Комментарии</a>
   </div>
 </div>

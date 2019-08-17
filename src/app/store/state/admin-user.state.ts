@@ -9,7 +9,8 @@ export interface AdminUserStateInterface {
 export const initialAdminUserState: AdminUserStateInterface = {
   adminUser: {
     token: '',
-    role: ''
+    role: '',
+    expire: ''
   },
   loading: false,
   loaded: true

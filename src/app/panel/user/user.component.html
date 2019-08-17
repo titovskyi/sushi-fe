@@ -7,8 +7,32 @@
     <app-sidebar></app-sidebar>
   </mat-sidenav>
   <mat-sidenav-content
-    class="col-xl-9"
+    class="col-sm-9 col-md-9 col-lg-9 col-xl-9"
   >
-    Users content
+    <table class="table table-hover user-table">
+      <thead>
+      <tr>
+        <th scope="col">№</th>
+        <th scope="col">Имя</th>
+        <th scope="col">Фамилия</th>
+        <th scope="col">Телефон</th>
+        <th scope="col">Роль</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td scope="row">{{user.name}}</td>
+          <td>{{user.sername}}</td>
+          <td>{{user.phone}}</td>
+          <td>{{user.phone}}</td>
+          <td>{{user.role}}</td>
+          <th>
+            <a class="user-table__link" (click)=editUser(user)>Изменить</a>
+            <br>
+            <a class="user-table__link" (click)=deleteUser(user)>Удалить</a>
+          </th>
+        </tr>
+      </tbody>
+    </table>
   </mat-sidenav-content>
 </mat-sidenav-container>

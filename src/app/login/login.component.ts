@@ -3,10 +3,10 @@ import {AuthenticationService} from '../_services/authentication.service';
 import {Router} from '@angular/router';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
-import {Store} from '@ngrx/store';
+import {select, Store} from '@ngrx/store';
 import {Login} from '../store/actions/admin-user.actions';
-import {User} from '../panel/_models/user';
-import {adminUserReducer} from '../store/reducers/admin-user.reducer';
+import {getAdminUser} from '../store/selectors/admin-user.selectors';
+import {AdminUser} from '../_models/adminUser';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +14,7 @@ import {adminUserReducer} from '../store/reducers/admin-user.reducer';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  private adminUser: AdminUser = null;
 
   public loginForm = new FormGroup({
     login: new FormControl ('', [Validators.required, Validators.minLength(4)]),
@@ -28,8 +29,10 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.store.subscribe((res: any) => {
-      console.log(res, 'result');
+    this.store.pipe(
+      select(getAdminUser)
+    ).subscribe((res) => {
+      this.check();
     });
   }
 
@@ -40,10 +43,11 @@ export class LoginComponent implements OnInit {
     this.store.dispatch(new Login(this.loginForm.value));
   }
 
-
-  some() {
-    this.store.select('adminUser').subscribe((res) => {
-      console.log(res.adminUser);
-    })
+  check() {
+    if (this.adminUser) {
+      this.router.navigateByUrl('/login');
+    } else {
+      this.router.navigateByUrl('/panel');
+    }
   }
 }

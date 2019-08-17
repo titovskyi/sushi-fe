@@ -11,8 +11,6 @@ export function adminUserReducer(state = initialAdminUserState, action: AdminUse
       };
     }
     case AdminUserActionTypes.LOGIN_ADMIN_USER_SUCCESS: {
-      localStorage.setItem('token', action.payload.token);
-      localStorage.setItem('role', action.payload.role);
       return {
         ...state,
         loading: false,
@@ -25,7 +23,8 @@ export function adminUserReducer(state = initialAdminUserState, action: AdminUse
         ...state,
         adminUser: {
           token: '',
-          role: ''
+          role: '',
+          expire: ''
         },
         loading: false,
         loaded: false

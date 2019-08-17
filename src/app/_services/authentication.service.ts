@@ -19,6 +19,14 @@ export class AuthenticationService {
     return localStorage.getItem('token');
   }
 
+  getRole() {
+    return localStorage.getItem(('role'));
+  }
+
+  getExpiration() {
+    return localStorage.getItem('expire');
+  }
+
   login(userData): Observable<AdminUser> {
     return this.http.post<AdminUser>(`${environment.API}/api/auth/login`, userData);
   }

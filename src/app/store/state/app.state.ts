@@ -3,7 +3,7 @@ import {AdminUserStateInterface, initialAdminUserState} from './admin-user.state
 
 export interface AppStateInterface {
   router?: RouterReducerState;
-  adminUser: AdminUserStateInterface
+  adminUser: AdminUserStateInterface;
 }
 
 export const initialAppState: AppStateInterface = {
