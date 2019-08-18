@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {GetAllUsers} from '../store/actions/users.actions';
+import {CreateUser, GetAllUsers, RemoveUser, UpdateUser} from '../store/actions/users.actions';
 import {Store} from '@ngrx/store';
 import {PanelStateInterface} from '../store/state/panel.state';
 import {User} from '../_models/user';
@@ -12,6 +12,7 @@ import {User} from '../_models/user';
 })
 export class UserComponent implements OnInit {
   public users: User[] = null;
+  public currentUser: User = null;
 
   constructor(
     private store: Store<PanelStateInterface>
@@ -23,4 +24,21 @@ export class UserComponent implements OnInit {
       this.users = res.panel.users.users;
     });
   }
+
+  chooseUser(currentUser: User) {
+    this.currentUser = {...currentUser};
+  }
+
+  removeUser(userId: number) {
+    this.store.dispatch(new RemoveUser(userId));
+  }
+
+  onAddUser(newUser: User) {
+    this.store.dispatch(new CreateUser(newUser));
+  }
+
+  onEditUser(editUser: User) {
+    this.store.dispatch(new UpdateUser(editUser));
+  }
+
 }

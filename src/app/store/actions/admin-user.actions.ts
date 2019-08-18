@@ -11,6 +11,7 @@ export enum AdminUserActionTypes {
 export class Login implements Action {
   readonly type = AdminUserActionTypes.LOGIN_ADMIN_USER;
   constructor(public payload: AdminUserLoginInterface) {}
+
 }
 
 export class LoginSuccess implements Action {
@@ -19,6 +20,7 @@ export class LoginSuccess implements Action {
   constructor(
     public payload: AdminUser
   ) {
+    console.log(payload);
     localStorage.setItem('token', payload.token);
     localStorage.setItem('role', payload.role);
     localStorage.setItem('expire', payload.expire);

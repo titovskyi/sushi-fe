@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
@@ -9,17 +10,23 @@ import {reducers} from './store/reducers/panel.reducers';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
+import {MatIconModule} from '@angular/material/icon';
 
 import {UserComponent} from './user/user.component';
 import {SidebarComponent} from './sidebar/sidebar.component';
 import {AdminComponent} from './admin/admin.component';
 import {ProductComponent} from './product/product.component';
 import {UsersEffects} from './store/effects/users.effects';
+import {AddUserComponent} from './user/add-user/add-user.component';
+import {EditUserComponent} from './user/edit-user/edit-user.component';
+import {UsersAuthGuard} from '../_guards/users.auth.guard';
+import {CommentComponent} from './comment/comment.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'products'},
   {path: 'products', component: ProductComponent},
-  {path: 'users', component: UserComponent}
+  {path: 'users', component: UserComponent, canActivate: [UsersAuthGuard]},
+  {path: 'comments', component: CommentComponent, canActivate: [UsersAuthGuard]}
 ];
 
 @NgModule({
@@ -27,16 +34,22 @@ const routes: Routes = [
     UserComponent,
     SidebarComponent,
     AdminComponent,
-    ProductComponent
+    ProductComponent,
+    AddUserComponent,
+    EditUserComponent,
+    CommentComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    ReactiveFormsModule,
+    FormsModule,
     StoreModule.forFeature('panel', {...reducers}),
     EffectsModule.forFeature(([UsersEffects])),
     MatSidenavModule,
     MatButtonModule,
-    MatTableModule
+    MatTableModule,
+    MatIconModule
   ]
 })
 export class PanelModule { }

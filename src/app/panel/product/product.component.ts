@@ -11,6 +11,9 @@ export class ProductComponent implements OnInit {
   constructor(private store: Store<any>) { }
 
   ngOnInit() {
+    this.store.subscribe((res: any) => {
+      console.log(res);
+    });
   }
 
 }

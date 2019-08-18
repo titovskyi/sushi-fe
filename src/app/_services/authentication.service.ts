@@ -28,6 +28,10 @@ export class AuthenticationService {
   }
 
   login(userData): Observable<AdminUser> {
+    console.log(userData);
+    this.http.post<AdminUser>(`${environment.API}/api/auth/login`, userData).subscribe(res => {
+      console.log(res);
+    })
     return this.http.post<AdminUser>(`${environment.API}/api/auth/login`, userData);
   }
 }

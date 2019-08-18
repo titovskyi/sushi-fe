@@ -1,0 +1,32 @@
+<mat-sidenav-container class="users row">
+  <mat-sidenav
+    class="col-sm-3 col-md-3 col-lg-3 col-xl-3 users__sidenav"
+    mode="side"
+    opened
+  >
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content
+    class="col-sm-9 col-md-9 col-lg-9 col-xl-9"
+  >
+    <table class="table table-hover user-table">
+      <thead>
+        <tr>
+          <th scope="col">Имя</th>
+          <th scope="col">Коментарий</th>
+          <th scope="col">Дата</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let comment of comments">
+        <td scope="row">{{comment["name"]}}</td>
+        <td>{{comment["comment"]}}</td>
+        <td>{{comment["createdAt"] | date: 'M/d/yy, h:mm a'}}</td>
+        <th>
+          <a class="user-table__link" (click)="removeComment(comment['id'])">Удалить</a>
+        </th>
+      </tr>
+      </tbody>
+    </table>
+  </mat-sidenav-content>
+</mat-sidenav-container>

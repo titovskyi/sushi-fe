@@ -8,7 +8,7 @@ export interface UserStateInterface {
 
 export const initialUserState: UserStateInterface = {
   users: [
-    {name: '', sername: '', phone: '', role: ''}
+    { id: 0, login: '', name: '', sername: '', phone: '', role: ''}
   ],
   loading: false,
   loaded: true

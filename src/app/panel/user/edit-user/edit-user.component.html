@@ -1,0 +1,41 @@
+<h3>Изменить пользователя</h3>
+
+<form class="form-inline mb-4">
+  <form [formGroup]="userForm" (submit)="changeUser()" class="form-inline mb-4">
+
+    <div style="{width: 100%;}">
+      <label class="sr-only" for="login">Логин</label>
+      <div class="input-group mb-2 mr-sm-2">
+        <input id="login" type="text" class="form-control" formControlName="login" placeholder="Логин">
+      </div>
+
+      <label class="sr-only" for="name">Имя</label>
+      <div class="input-group mb-2 mr-sm-2">
+        <input id="name" type="text" class="form-control" formControlName="name" placeholder="Имя">
+      </div>
+
+      <label class="sr-only" for="sername">Фамилия</label>
+      <div class="input-group mb-2 mr-sm-2">
+        <input id="sername" type="text" class="form-control" formControlName="sername" placeholder="Фамилия">
+      </div>
+    </div>
+
+    <div style="{width: 100%;}">
+
+
+      <label class="sr-only" for="phone">Телефон</label>
+      <div class="input-group mb-2 mr-sm-2">
+        <input id="phone" type="number" class="form-control" formControlName="phone" placeholder="Телефон">
+      </div>
+
+      <label class="sr-only" for="role">Роль</label>
+      <div id="role" class="input-group mb-2 mr-sm-2">
+        <select formControlName="role" class="form-control">
+          <option>ADMIN</option>
+          <option>SELLER</option>
+        </select>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">Добавить нового</button>
+  </form>
+</form>

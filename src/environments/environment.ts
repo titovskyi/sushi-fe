@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  API: 'http://localhost:3000'
+  API: 'http://localhost:3000',
+  PANEL_USER: 'http://localhost:3000/api/user',
+  PANEL_COMMENT: 'http://localhost:3000/api/comment'
 };
 
 /*

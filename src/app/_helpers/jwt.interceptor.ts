@@ -20,16 +20,17 @@ export class JwtInterceptor implements HttpInterceptor {
     const expireTime = this.authService.getExpiration();
 
     // @ts-ignore
-    // if (Date.now() - localStorage.getItem('expire') > 10000) {
-    //   localStorage.clear();
-    //   this.router.navigateByUrl('/login');
-    // }
+    if (Date.now() - localStorage.getItem('expire') > 3600000) {
+      localStorage.clear();
+      this.router.navigateByUrl('/login');
+    }
 
     req = req.clone({
-      setHeaders: {
-        auth: `${token}`
-      }
+        setHeaders: {
+          auth: `${token}`
+        }
       });
+    localStorage.setItem('expire', Date.now().toString());
 
     return next.handle(req);
   }
