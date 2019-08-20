@@ -16,7 +16,7 @@ export class JwtInterceptor implements HttpInterceptor {
   ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
-    const token = this.authService.getToken();
+    const token = this.authService.getToken() || '111';
     const expireTime = this.authService.getExpiration();
 
     // @ts-ignore

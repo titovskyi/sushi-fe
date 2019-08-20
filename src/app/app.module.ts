@@ -10,7 +10,7 @@ import {AdminUserEffect} from './store/effects/admin-user.effects';
 import {AppRoutingModule} from './app-routing.module';
 
 import {AppComponent} from './app.component';
-import {HomeComponent} from './home/home.component';
+import {HomeComponent} from './components/home/home.component';
 import {LoginComponent} from './login/login.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
@@ -21,21 +21,26 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {JwtInterceptor} from './_helpers/jwt.interceptor';
-import { CommentsComponent } from './comments/comments/comments.component';
+import { CommentsComponent } from './components/comments/comments/comments.component';
 import {CommentsEffects} from './store/effects/comments.effects';
+import { ContactsComponent } from './components/contacts/contacts.component';
+import { DeliveryComponent } from './components/delivery/delivery.component';
+import {StoreInfoEffects} from './store/effects/store-info.effects';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    CommentsComponent
+    CommentsComponent,
+    ContactsComponent,
+    DeliveryComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     StoreModule.forRoot({...reducers}),
-    EffectsModule.forRoot([AdminUserEffect, CommentsEffects]),
+    EffectsModule.forRoot([AdminUserEffect, CommentsEffects, StoreInfoEffects]),
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,

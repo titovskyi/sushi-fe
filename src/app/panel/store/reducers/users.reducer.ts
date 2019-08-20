@@ -53,7 +53,6 @@ export function userReducer(state = initialUserState, action: UsersActions): Use
     }
     // TODO ERROR
     case UsersActionTypes.UPDATE_USER_FAIL: {
-      console.log(action.payload, 'patch');
       return {
         ...state
       };

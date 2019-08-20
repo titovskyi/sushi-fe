@@ -1,6 +1,5 @@
 import {AdminUserActionTypes, AdminUserActions} from '../actions/admin-user.actions';
 import {initialAdminUserState, AdminUserStateInterface} from '../state/admin-user.state';
-import {act} from '@ngrx/effects';
 
 export function adminUserReducer(state = initialAdminUserState, action: AdminUserActions): AdminUserStateInterface {
   switch (action.type) {

@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {AppStateInterface} from '../../store/state/app.state';
+import {AppStateInterface} from '../../../store/state/app.state';
 import {Store} from '@ngrx/store';
-import {CreateComment, GetAllComments} from '../../store/actions/comments.actions';
+import {CreateComment, GetAllComments} from '../../../store/actions/comments.actions';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Comment} from '../../_models/comment';
+import {Comment} from '../../../_models/comment';
 
 @Component({
   selector: 'app-comments',

@@ -1,0 +1,14 @@
+.delivery-header-text {
+  text-align: center;
+}
+
+.delivery {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 0 auto;
+
+  &__info {
+    height: 500px;
+  }
+}

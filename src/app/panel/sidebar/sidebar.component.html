@@ -8,7 +8,10 @@
   <div class="side-menu__item" *ngIf="userRole === 'ADMIN'">
     <a mat-flat-button routerLink="/panel/users" class="side-menu__link">Админы</a>
   </div>
-  <div class="side-menu__item">
+  <div class="side-menu__item" *ngIf="userRole === 'ADMIN'">
     <a mat-flat-button routerLink="/panel/comments" class="side-menu__link">Комментарии</a>
+  </div>
+  <div class="side-menu__item" *ngIf="userRole === 'ADMIN'">
+    <a mat-flat-button routerLink="/panel/store-info" class="side-menu__link">Информация</a>
   </div>
 </div>

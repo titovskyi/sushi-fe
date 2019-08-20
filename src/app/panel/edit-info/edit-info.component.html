@@ -1,0 +1,41 @@
+<h3 class="delivery-header-text">Изменить информация о магазине</h3>
+
+<form class=" mb-4">
+  <form [formGroup]="storeInfoForm" (submit)="changeInfo()" class="delivery mb-4">
+    <label for="city">Город</label>
+    <div class="input-group mb-2 mr-sm-2">
+      <input id="city" type="text" class="form-control" formControlName="city" placeholder="Город">
+    </div>
+
+    <label for="delivery_time">Время работы</label>
+    <div class="input-group mb-2 mr-sm-2">
+      <input id="delivery_time" type="text" class="form-control" formControlName="delivery_time" placeholder="Время работы">
+    </div>
+
+    <label for="delivery_info">Информация о доставке</label>
+    <div class="input-group mb-2 mr-sm-2">
+      <textarea
+        id="delivery_info"
+        type="text"
+        class="form-control delivery__info"
+        formControlName="delivery_info"
+        placeholder="Информация о доставке"
+        (keyup)="autoGrow(this)"
+      ></textarea>
+    </div>
+
+    <label for="phone">Телефоны</label>
+    <div class="input-group mb-2 mr-sm-2">
+      <input id="phone" type="text" class="form-control" formControlName="phone" placeholder="Телефоны">
+    </div>
+    <label for="map">Карта</label>
+    <div class="input-group mb-2 mr-sm-2">
+      <input id="map" type="text" class="form-control" formControlName="map" placeholder="Карта">
+    </div>
+    <label for="logo">Логотип</label>
+    <div class="input-group mb-2 mr-sm-2">
+      <input id="logo" type="file" class="form-control" formControlName="logo" placeholder="Логотип">
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">Изменить</button>
+  </form>
+</form>

@@ -24,7 +24,6 @@ export class UserService {
   }
 
   updateUser(user: User): Observable<User> {
-    console.log(user, 'service');
     return this.http.patch<User>(`${environment.PANEL_USER}/${user.id}`, user);
   }
 

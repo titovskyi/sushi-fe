@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-import {StoreModule} from '@ngrx/store';
+import {Store, StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
 import {reducers} from './store/reducers/panel.reducers';
 
@@ -21,12 +21,14 @@ import {AddUserComponent} from './user/add-user/add-user.component';
 import {EditUserComponent} from './user/edit-user/edit-user.component';
 import {UsersAuthGuard} from '../_guards/users.auth.guard';
 import {CommentComponent} from './comment/comment.component';
+import {EditInfoComponent} from './edit-info/edit-info.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'products'},
   {path: 'products', component: ProductComponent},
   {path: 'users', component: UserComponent, canActivate: [UsersAuthGuard]},
-  {path: 'comments', component: CommentComponent, canActivate: [UsersAuthGuard]}
+  {path: 'comments', component: CommentComponent, canActivate: [UsersAuthGuard]},
+  {path: 'store-info', component: EditInfoComponent, canActivate: [UsersAuthGuard]}
 ];
 
 @NgModule({
@@ -37,7 +39,8 @@ const routes: Routes = [
     ProductComponent,
     AddUserComponent,
     EditUserComponent,
-    CommentComponent
+    CommentComponent,
+    EditInfoComponent
   ],
   imports: [
     CommonModule,
