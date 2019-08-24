@@ -1,5 +1,5 @@
-<div class="d-flex">
-  <div class="col-sm-5 col-md-5 col-lg-5 col-xl-5">
+<div class="d-flex flex-wrap main-wrapper">
+  <div class="col-12 col-sm-5 col-md-5 col-lg-5 col-xl-5 leave-comment">
     <h4>Оставьте ваш комментарий:</h4>
     <form [formGroup]="commentForm" class="comment-form" (ngSubmit)="createComment()">
       <mat-form-field class="comment-form__item">
@@ -7,16 +7,26 @@
       </mat-form-field>
 
       <mat-form-field class="comment-form__item">
+        <input matInput placeholder="Заголовок" formControlName="header">
+      </mat-form-field>
+
+      <mat-form-field class="comment-form__item">
         <textarea matInput placeholder="Оставте коментарий" formControlName="comment"></textarea>
       </mat-form-field>
-      <button type="submit" class="btn btn-primary mb-2">Отправить</button>
+      <button type="submit" class="btn btn_main-color">Отправить</button>
     </form>
   </div>
-  <div class="col-sm-7 col-md-7 col-lg-7 col-xl-7">
+  <div class="col-12 col-sm-5 col-md-5 col-lg-5 col-xl-5 structure-div"></div>
+  <div class="col-12 col-sm-7 col-md-7 col-lg-7 col-xl-7">
     <div *ngFor="let comment of comments">
-      <div>{{comment.name}}</div>
-      <div>{{comment.comment}}</div>
-      <div>{{comment.createdAt}}</div>
+      <div class="comment">
+        <div class="comment__name">{{comment.name}}</div>
+        <div class="comment__date">{{comment.createdAt | date: 'medium'}}</div>
+        <div class="comment__wrapper">
+          <div class="comment__header">{{comment.header}}</div>
+          <div class="comment__text">{{comment.comment}}</div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

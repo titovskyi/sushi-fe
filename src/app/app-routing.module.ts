@@ -9,7 +9,8 @@ import {DeliveryComponent} from './components/delivery/delivery.component';
 
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
+  {path: '', pathMatch: 'full', redirectTo: 'home'},
+  {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'comments', component: CommentsComponent},
   {path: 'contacts', component: ContactsComponent},

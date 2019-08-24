@@ -23,7 +23,6 @@ export class DeliveryComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.store.dispatch(new GetStoreInfo());
     this.sub = this.store.subscribe((res: AppStateInterface) => {
-      console.log(res);
       this.deliveryText = res.info.info.delivery_info;
       this.map = res.info.info.map;
     });

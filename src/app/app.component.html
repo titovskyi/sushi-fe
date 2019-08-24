@@ -1,1 +1,4 @@
+<app-header *ngIf="router.url !== '/login' && router.url.indexOf('panel') === -1"></app-header>
+<div *ngIf="router.url !== '/login' && router.url.indexOf('panel') === -1"></div>
 <router-outlet></router-outlet>
+<app-footer *ngIf="router.url !== '/login' && router.url.indexOf('panel') === -1"></app-footer>

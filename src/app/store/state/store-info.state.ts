@@ -14,6 +14,7 @@ export const initialStoreInfoState: StoreInfoStateInterface = {
     delivery_time: '',
     map: '',
     logo: '',
+    prev_logo_name: '',
     phone: ''
   },
   loading: false,

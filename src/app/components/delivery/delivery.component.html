@@ -1,9 +1,16 @@
-<div [innerHTML]="deliveryText"></div>
-<iframe
-  [src]="methodToGetURL()"
-  width="600"
-  height="450"
-  frameborder="0"
-  style="border:0"
-  allowfullscreen
-></iframe>
+<div class="container-fluid delivery-wrapper">
+  <div class="row">
+    <div [innerHTML]="deliveryText" class="col-sm-12 col-md-6 col-lg-6 col-xl-6" *ngIf="map"></div>
+    <div [innerHTML]="deliveryText" class="col-sm-12 col-md-12 col-lg-12 col-xl-12" *ngIf="!map"></div>
+    <iframe
+      *ngIf="map"
+      class="col-sm-12 col-md-6 col-lg-6 col-xl-6"
+      [src]="methodToGetURL()"
+      width="600"
+      height="450"
+      frameborder="0"
+      style="border:0"
+      allowfullscreen
+    ></iframe>
+  </div>
+</div>

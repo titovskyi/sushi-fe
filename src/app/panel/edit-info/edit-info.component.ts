@@ -2,8 +2,11 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AppStateInterface} from '../../store/state/app.state';
 import {Store} from '@ngrx/store';
-import {GetStoreInfo, UpdateStoreInfo} from '../../store/actions/store-info.actions';
+import {UpdateStoreInfo} from '../../store/actions/store-info.actions';
 import {Subscription} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {DomSanitizer} from '@angular/platform-browser';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-edit-info',
@@ -14,9 +17,15 @@ export class EditInfoComponent implements OnInit, OnDestroy {
   public storeInfoForm: FormGroup;
   private sub: Subscription;
 
+  uploadedFile: File;
+  prevLogoPath: string = null;
+  logoPath: any = null;
+  fileName;
   constructor(
     private fb: FormBuilder,
-    private store: Store<AppStateInterface>
+    private store: Store<AppStateInterface>,
+    private http: HttpClient,
+    private domSanitizer: DomSanitizer
   ) { }
 
   ngOnInit() {
@@ -29,25 +38,40 @@ export class EditInfoComponent implements OnInit, OnDestroy {
       phone: ['']
     });
 
-    this.store.dispatch(new GetStoreInfo());
+    // this.store.dispatch(new GetStoreInfo());
     this.sub = this.store.subscribe((res: AppStateInterface) => {
-      console.log(res);
+      this.prevLogoPath = res.info.info.logo;
+      this.logoPath = this.domSanitizer.bypassSecurityTrustUrl(`${environment.API}/uploads/${res.info.info.logo}`);;
       this.storeInfoForm.patchValue({
         city: res.info.info.city,
         delivery_time: res.info.info.delivery_time,
         delivery_info: res.info.info.delivery_info,
         map: res.info.info.map,
-        logo: res.info.info.logo,
+        logo:  this.logoPath,
         phone: res.info.info.phone
       });
     });
   }
 
   changeInfo() {
-    this.store.dispatch(new UpdateStoreInfo(this.storeInfoForm.value));
+    this.storeInfoForm.patchValue({logo: this.fileName});
+    const newInfo = {...this.storeInfoForm.value, prev_logo_name: this.prevLogoPath};
+    this.store.dispatch(new UpdateStoreInfo(newInfo));
   }
 
   ngOnDestroy(): void {
     this.sub.unsubscribe();
+  }
+
+  fileChange(element) {
+    this.uploadedFile = element.target.files[0];
+
+    const formData = new FormData();
+    formData.append('upload', this.uploadedFile, this.uploadedFile.name);
+    this.http.post('http://localhost:3000/api/upload', formData)
+      .subscribe((response: any) => {
+        this.fileName = response.filePath;
+        this.logoPath = this.domSanitizer.bypassSecurityTrustUrl(`${environment.API}/uploads/${this.fileName}`);
+      });
   }
 }

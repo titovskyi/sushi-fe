@@ -5,5 +5,6 @@ export class StoreInfo {
   delivery_info: string;
   map: string;
   logo: string;
+  prev_logo_name: string;
   phone: string;
 }

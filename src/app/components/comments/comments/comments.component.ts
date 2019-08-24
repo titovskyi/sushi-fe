@@ -22,6 +22,7 @@ export class CommentsComponent implements OnInit {
   ngOnInit() {
     this.commentForm = this.fb.group({
       name: ['', Validators.required],
+      header: ['', Validators.required],
       comment: ['', Validators.required]
     });
 
@@ -35,6 +36,7 @@ export class CommentsComponent implements OnInit {
     const newComment: Comment = {
       id: null,
       name: this.commentForm.get('name').value,
+      header: this.commentForm.get('header').value,
       comment: this.commentForm.get('comment').value,
       createdAt: null
     };

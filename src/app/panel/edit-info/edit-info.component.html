@@ -1,7 +1,6 @@
-<h3 class="delivery-header-text">Изменить информация о магазине</h3>
+<h3 class="delivery-header-text">Изменить информацию о магазине</h3>
 
-<form class=" mb-4">
-  <form [formGroup]="storeInfoForm" (submit)="changeInfo()" class="delivery mb-4">
+  <form [formGroup]="storeInfoForm" (submit)="changeInfo()" class="delivery mb-4" enctype="multipart/form-data">
     <label for="city">Город</label>
     <div class="input-group mb-2 mr-sm-2">
       <input id="city" type="text" class="form-control" formControlName="city" placeholder="Город">
@@ -20,7 +19,6 @@
         class="form-control delivery__info"
         formControlName="delivery_info"
         placeholder="Информация о доставке"
-        (keyup)="autoGrow(this)"
       ></textarea>
     </div>
 
@@ -32,10 +30,31 @@
     <div class="input-group mb-2 mr-sm-2">
       <input id="map" type="text" class="form-control" formControlName="map" placeholder="Карта">
     </div>
-    <label for="logo">Логотип</label>
-    <div class="input-group mb-2 mr-sm-2">
-      <input id="logo" type="file" class="form-control" formControlName="logo" placeholder="Логотип">
+    <div class="upload">
+      <div class="header">
+        <p>Изменение логотипа:</p>
+      </div>
+      <img [src]="logoPath" alt="" class="logo-preview">
+      <div class="row margin25">
+        <div class="col-md-12">
+          <div class="input-group">
+            <div class="custom-file">
+              <input
+                (change)="fileChange($event)"
+                type="file"
+                name="logo"
+                class="custom-file-input upload__input"
+                id="inputGroupFile01"
+                aria-describedby="inputGroupFileAddon01"
+              >
+              <label class="upload__label" for="inputGroupFile01" >
+                Выбрать
+              </label>
+            </div>
+        </div>
+      </div>
     </div>
+</div>
     <button type="submit" class="btn btn-primary mb-2">Изменить</button>
   </form>
-</form>
+

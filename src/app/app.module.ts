@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 
 import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
@@ -26,10 +26,21 @@ import {CommentsEffects} from './store/effects/comments.effects';
 import { ContactsComponent } from './components/contacts/contacts.component';
 import { DeliveryComponent } from './components/delivery/delivery.component';
 import {StoreInfoEffects} from './store/effects/store-info.effects';
+import {HeaderComponent} from './components/header/header.component';
+import {FooterComponent} from './components/footer/footer.component';
 
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+import {AngularFontAwesomeModule} from 'angular-font-awesome'
+
+import localeRu from '@angular/common/locales/ru';
+import {registerLocaleData} from '@angular/common';
+
+registerLocaleData(localeRu);
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
+    FooterComponent,
     HomeComponent,
     LoginComponent,
     CommentsComponent,
@@ -49,10 +60,13 @@ import {StoreInfoEffects} from './store/effects/store-info.effects';
     MatInputModule,
     ReactiveFormsModule,
     MatButtonModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    CollapseModule.forRoot(),
+    AngularFontAwesomeModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: LOCALE_ID, useValue: 'RU' }
   ],
   bootstrap: [AppComponent]
 })

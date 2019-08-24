@@ -1,0 +1,80 @@
+<div class="container">
+  <nav class="navbar navbar-expand-lg header">
+    <div class="header__item">
+      <button class="navbar-toggler button_reset" type="button" (click)="toggleNavbar()">
+        <span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true"></i></span>
+      </button>
+
+      <a class="navbar-brand logo_header" [ngStyle]="{'background-image': getLogo()}" href="#">
+      </a>
+      <div class="info">
+        <div class="city_header" [innerHTML]="info.city"></div>
+        <div class="about">
+          <p class="phone phone_header" *ngFor="let phone of getPhones()">{{phone}}</p>
+          <p class="delivery" [innerHTML]="info.delivery_time"></p>
+        </div>
+      </div>
+    </div>
+    <div class="header__item">
+      <div class="collapse navbar-collapse navigation_sm-style navigation_position" [ngClass]="{ 'show': navbarOpen }">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link link link_dark" routerLink="/delivery">Доставка</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link link_dark" href="#">Новости</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link link_dark" routerLink="/comments">Отзывы</a>
+          </li>
+        </ul>
+
+        <div class="sub-info">
+          <hr>
+          <p class="phone phone_header" *ngFor="let phone of getPhones()">{{phone}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="header__item">
+      <div class="cart-info">
+        <p class="cart-info__cost">0 ₴</p>
+        <p class="cart-info__quantity">0 товаров</p>
+      </div>
+      <div class="cart">
+        <a class="nav-link link link_light" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Корзина</a>
+      </div>
+    </div>
+  </nav>
+</div>
+<hr>
+<div class="container">
+  <ul class="menu navbar-nav mr-auto">
+    <li class="menu__item link link_dark"><a routerLink="/home" fragment="sushi">Суши</a></li>
+    <li class="menu__item link link_dark"><a href="#sushi">Суши</a></li>
+    <li class="menu__item link link_dark"><a routerLink="/home" fragment="rolls">Роллы</a></li>
+    <li class="menu__item link link_dark"><a href="#rolls">Роллы</a></li>
+    <li class="menu__item link link_dark"><a routerLink="/home" fragment="sets">Сеты</a></li>
+    <li class="menu__item link link_dark"><a href="#sets">Сеты</a></li>
+    <li class="menu__item link link_dark">Специи</li>
+    <li class="menu__item link link_dark">Напитки</li>
+  </ul>
+
+  <div
+    class="menu-mobile__trigger"
+    (click)="isCollapsed = !isCollapsed"
+    [attr.aria-expanded]="!isCollapsed"
+    aria-controls="collapseBasic"
+  >Меню</div>
+  <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
+    <div class="well well-lg card card-block">
+      <ul class="menu-mobile navbar-nav">
+        <li class="menu-mobile__item link link_dark">Суши</li>
+        <li class="menu-mobile__item link link_dark">Роллы</li>
+        <li class="menu-mobile__item link link_dark">Сеты</li>
+        <li class="menu-mobile__item link link_dark">Специи</li>
+        <li class="menu-mobile__item link link_dark">Напитки</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<hr>

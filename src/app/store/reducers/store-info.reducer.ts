@@ -21,6 +21,7 @@ export function storeInfoReducer(state = initialStoreInfoState, action: StoreInf
           delivery_time: '',
           map: '',
           logo: '',
+          prev_logo_name: '',
           phone: ''
         },
         loading: false,

@@ -8,7 +8,7 @@ export interface CommentStateInterface {
 
 export const initialCommentState: CommentStateInterface = {
   comments: [
-    {id: 0, name: '', comment: '', createdAt: null}
+    {id: 0, name: '', header: '', comment: '', createdAt: null}
   ],
   loading: false,
   loaded: true
