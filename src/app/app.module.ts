@@ -34,8 +34,10 @@ import {AngularFontAwesomeModule} from 'angular-font-awesome'
 
 import localeRu from '@angular/common/locales/ru';
 import {registerLocaleData} from '@angular/common';
+import {NgxPageScrollCoreModule} from 'ngx-page-scroll-core';
 
 registerLocaleData(localeRu);
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +64,8 @@ registerLocaleData(localeRu);
     MatButtonModule,
     MatFormFieldModule,
     CollapseModule.forRoot(),
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    NgxPageScrollCoreModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

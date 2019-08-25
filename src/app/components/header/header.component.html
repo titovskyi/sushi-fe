@@ -5,7 +5,7 @@
         <span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true"></i></span>
       </button>
 
-      <a class="navbar-brand logo_header" [ngStyle]="{'background-image': getLogo()}" href="#">
+      <a class="navbar-brand logo_header" [ngStyle]="{'background-image': getLogo()}" routerLink="/home">
       </a>
       <div class="info">
         <div class="city_header" [innerHTML]="info.city"></div>
@@ -49,14 +49,17 @@
 <hr>
 <div class="container">
   <ul class="menu navbar-nav mr-auto">
-    <li class="menu__item link link_dark"><a routerLink="/home" fragment="sushi">Суши</a></li>
-    <li class="menu__item link link_dark"><a href="#sushi">Суши</a></li>
-    <li class="menu__item link link_dark"><a routerLink="/home" fragment="rolls">Роллы</a></li>
-    <li class="menu__item link link_dark"><a href="#rolls">Роллы</a></li>
-    <li class="menu__item link link_dark"><a routerLink="/home" fragment="sets">Сеты</a></li>
-    <li class="menu__item link link_dark"><a href="#sets">Сеты</a></li>
-    <li class="menu__item link link_dark">Специи</li>
-    <li class="menu__item link link_dark">Напитки</li>
+    <li class="menu__item link link_dark" *ngIf="!this.routingValue" routerLink="/home" fragment="sushi">Суши</li>
+    <li class="menu__item link link_dark" *ngIf="!this.routingValue" routerLink="/home" fragment="rolls">Роллы</li>
+    <li class="menu__item link link_dark" *ngIf="!this.routingValue" routerLink="/home" fragment="sets">Сеты</li>
+    <li class="menu__item link link_dark" *ngIf="!this.routingValue" routerLink="/home" fragment="spice">Специи</li>
+    <li class="menu__item link link_dark" *ngIf="!this.routingValue" routerLink="/home" fragment="drinks">Напитки</li>
+
+    <li class="menu__item link link_dark" *ngIf="this.routingValue" (click)="sendAnchor('sushi')">Суши</li>
+    <li class="menu__item link link_dark" *ngIf="this.routingValue" (click)="sendAnchor('rolls')">Роллы</li>
+    <li class="menu__item link link_dark" *ngIf="this.routingValue" (click)="sendAnchor('sets')">Сеты</li>
+    <li class="menu__item link link_dark" *ngIf="this.routingValue" (click)="sendAnchor('spice')">Специи</li>
+    <li class="menu__item link link_dark" *ngIf="this.routingValue" (click)="sendAnchor('drinks')">Напитки</li>
   </ul>
 
   <div
@@ -68,11 +71,17 @@
   <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
     <div class="well well-lg card card-block">
       <ul class="menu-mobile navbar-nav">
-        <li class="menu-mobile__item link link_dark">Суши</li>
-        <li class="menu-mobile__item link link_dark">Роллы</li>
-        <li class="menu-mobile__item link link_dark">Сеты</li>
-        <li class="menu-mobile__item link link_dark">Специи</li>
-        <li class="menu-mobile__item link link_dark">Напитки</li>
+        <li class="menu-mobile__item link link_dark" *ngIf="!this.routingValue" routerLink="/home" fragment="sushi">Суши</li>
+        <li class="menu-mobile__item link link_dark" *ngIf="!this.routingValue" routerLink="/home" fragment="rolls">Роллы</li>
+        <li class="menu-mobile__item link link_dark" *ngIf="!this.routingValue" routerLink="/home" fragment="sets">Сеты</li>
+        <li class="menu-mobile__item link link_dark" *ngIf="!this.routingValue" routerLink="/home" fragment="spice">Специи</li>
+        <li class="menu-mobile__item link link_dark" *ngIf="!this.routingValue" routerLink="/home" fragment="drinks">Напитки</li>
+
+        <li class="menu-mobile__item link link_dark" *ngIf="this.routingValue" (click)="sendAnchor('sushi')">Суши</li>
+        <li class="menu-mobile__item link link_dark" *ngIf="this.routingValue" (click)="sendAnchor('rolls')">Роллы</li>
+        <li class="menu-mobile__item link link_dark" *ngIf="this.routingValue" (click)="sendAnchor('sets')">Сеты</li>
+        <li class="menu-mobile__item link link_dark" *ngIf="this.routingValue" (click)="sendAnchor('spice')">Специи</li>
+        <li class="menu-mobile__item link link_dark" *ngIf="this.routingValue" (click)="sendAnchor('drinks')">Напитки</li>
       </ul>
     </div>
   </div>
