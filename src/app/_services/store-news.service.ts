@@ -26,7 +26,8 @@ export class StoreNewsService {
   }
 
   updateStoreNews(storeNews: StoreNews): Observable<StoreNews> {
-    return this.http.patch<StoreNews>(`${environment}/${storeNews.id}`, storeNews);
+    console.log(storeNews);
+    return this.http.patch<StoreNews>(`${environment.STORE_NEWS}/${storeNews.id}`, storeNews);
   }
 
   removeUser(storeNewsId: number): Observable<any> {

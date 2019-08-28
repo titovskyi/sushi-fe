@@ -49,7 +49,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   public getLogo() {
-    console.log(`${environment.API}/uploads/${this.info.logo}`);
     return `url(${environment.API}/uploads/${this.info.logo})`;
   }
 

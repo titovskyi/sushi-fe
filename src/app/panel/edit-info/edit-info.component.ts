@@ -41,7 +41,7 @@ export class EditInfoComponent implements OnInit, OnDestroy {
     // this.store.dispatch(new GetStoreInfo());
     this.sub = this.store.subscribe((res: AppStateInterface) => {
       this.prevLogoPath = res.info.info.logo;
-      this.logoPath = this.domSanitizer.bypassSecurityTrustUrl(`${environment.API}/uploads/${res.info.info.logo}`);;
+      this.logoPath = this.domSanitizer.bypassSecurityTrustUrl(`${environment.API}/uploads/${res.info.info.logo}`);
       this.storeInfoForm.patchValue({
         city: res.info.info.city,
         delivery_time: res.info.info.delivery_time,

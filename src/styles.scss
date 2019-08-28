@@ -6,3 +6,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-card-header-text {
   margin: 0 auto !important;
 }
+
+.carousel-control-next, .carousel-control-prev {
+  cursor: pointer;
+}

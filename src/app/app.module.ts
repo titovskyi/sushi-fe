@@ -29,6 +29,8 @@ import {StoreInfoEffects} from './store/effects/store-info.effects';
 import {HeaderComponent} from './components/header/header.component';
 import {FooterComponent} from './components/footer/footer.component';
 
+
+
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import {AngularFontAwesomeModule} from 'angular-font-awesome'
 
@@ -41,6 +43,10 @@ import { NewsCardComponent } from './components/news/news-card/news-card.compone
 
 registerLocaleData(localeRu);
 
+// ADD for ngx-slider
+
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,7 +81,9 @@ registerLocaleData(localeRu);
     MatFormFieldModule,
     CollapseModule.forRoot(),
     AngularFontAwesomeModule,
-    NgxPageScrollCoreModule
+    NgxPageScrollCoreModule,
+    CarouselModule,
+    BsDropdownModule.forRoot()
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

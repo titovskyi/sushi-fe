@@ -26,7 +26,6 @@ export class FooterComponent implements OnInit {
   }
 
   public getLogo() {
-    console.log(`${environment.API}/uploads/${this.info.logo}`);
     return `url(${environment.API}/uploads/${this.info.logo})`;
   }
 

@@ -30,9 +30,9 @@
           <td>{{user.phone}}</td>
           <td>{{user.role}}</td>
           <th>
-            <a class="user-table__link" (click)="chooseUser(user)">Изменить</a>
+            <a class="user-table__link" (click)="chooseUser(user)"><i class="fa fa-pencil" aria-hidden="true"></i></a>
             <br>
-            <a class="user-table__link" (click)=removeUser(user.id)>Удалить</a>
+            <a class="user-table__link" (click)=removeUser(user.id)><i class="fa fa-trash" aria-hidden="true"></i></a>
           </th>
         </tr>
       </tbody>

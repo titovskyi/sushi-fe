@@ -1,0 +1,36 @@
+<mat-sidenav-container class="news row">
+  <mat-sidenav
+    class="col-sm-3 col-md-3 col-lg-3 col-xl-3 news__sidenav"
+    mode="side"
+    opened
+  >
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content
+    class="col-sm-9 col-md-9 col-lg-9 col-xl-9"
+  >
+    <button type="button" class="btn btn-primary mb-2" routerLink="/panel/add-edit-news">Добавить</button>
+    <table class="table table-hover user-table">
+      <thead>
+      <tr>
+        <th scope="col">Изображение</th>
+        <th scope="col">Заглавие</th>
+        <th scope="col">Описание</th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of news" routerLink="/panel/add-edit-news/{{item.id}}" >
+        <td scope="row">
+          <img [src]="getSafeUrl(item.image)" class="list-news-image">
+        </td>
+        <td>{{item.header}}</td>
+        <td>{{item.description}}</td>
+        <th (click)="removeNews(item.id)">
+          <a class="user-table__link"><i class="fa fa-trash" aria-hidden="true"></i></a>
+        </th>
+      </tr>
+      </tbody>
+    </table>
+  </mat-sidenav-content>
+</mat-sidenav-container>

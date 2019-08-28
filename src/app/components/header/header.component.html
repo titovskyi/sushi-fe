@@ -1,10 +1,25 @@
 <div class="container-fluid">
   <nav class="navbar navbar-expand-lg header">
     <div class="header__item">
-      <button class="navbar-toggler button_reset" type="button" (click)="toggleNavbar()">
-        <span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true"></i></span>
-      </button>
-
+      <div class="btn-group" dropdown>
+        <button
+          id="button-autoclose1"
+          dropdownToggle
+          type="button"
+          class="navbar-toggler button_reset"
+          aria-controls="dropdown-autoclose1"
+        >
+          <span class="navbar-toggler-icon">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+          </span>
+        </button>
+        <ul id="dropdown-autoclose1" *dropdownMenu class="dropdown-menu"
+            role="menu" aria-labelledby="button-autoclose1">
+          <li role="menuitem"><a class="dropdown-item" routerLink="/delivery">Доставка</a></li>
+          <li role="menuitem"><a class="dropdown-item" routerLink="/news">Новости</a></li>
+          <li role="menuitem"><a class="dropdown-item" routerLink="/comments">Отзывы</a></li>
+        </ul>
+      </div>
       <a class="navbar-brand logo_header" [ngStyle]="{'background-image': getLogo()}" routerLink="/home">
       </a>
       <div class="info">
@@ -16,7 +31,7 @@
       </div>
     </div>
     <div class="header__item">
-      <div class="collapse navbar-collapse navigation_sm-style navigation_position" [ngClass]="{ 'show': navbarOpen }">
+      <div class="collapse navbar-collapse navigation_sm-style navigation_position">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <a class="nav-link link link_dark" routerLink="/delivery">Доставка</a>
@@ -28,11 +43,11 @@
             <a class="nav-link link link_dark" routerLink="/comments">Отзывы</a>
           </li>
         </ul>
-
         <div class="sub-info">
           <hr>
           <p class="phone phone_header" *ngFor="let phone of getPhones()">{{phone}}</p>
         </div>
+
       </div>
     </div>
     <div class="header__item">

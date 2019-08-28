@@ -1,0 +1,53 @@
+.news {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #eee;
+
+  &__sidenav {
+    padding-right: 0;
+  }
+}
+
+.news-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 0 auto;
+
+  &__info {
+    height: 300px;
+  }
+}
+
+.logo-preview {
+  width: 300px;
+}
+
+.upload {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+
+  & .header {
+    width: 100%;
+    font-size: 20px;
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__label {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+}

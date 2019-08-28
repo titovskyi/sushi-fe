@@ -1,0 +1,65 @@
+<mat-sidenav-container class="news row">
+  <mat-sidenav
+    class="col-sm-3 col-md-3 col-lg-3 col-xl-3 news__sidenav"
+    mode="side"
+    opened
+  >
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content
+    class="col-sm-9 col-md-9 col-lg-9 col-xl-9"
+  >
+
+    <h3 class="delivery-header-text" [innerHTML]="newsId ? 'Изменить новость': 'Добавить новость'"></h3>
+    <form class="news-form" [formGroup]="newsForm" (submit)="submitForm()" enctype="multipart/form-data">
+      <label for="header">Заглавие</label>
+      <div class="input-group mb-2 mr-sm-2">
+        <input id="header" type="text" class="form-control" formControlName="header" placeholder="Заглавие">
+      </div>
+
+<!--      <label for="description">Описание</label>-->
+<!--      <div class="input-group mb-2 mr-sm-2">-->
+<!--        <input id="description" type="text" class="form-control" formControlName="description" placeholder="Описание">-->
+<!--      </div>-->
+
+      <label for="description">Описание</label>
+      <div class="input-group mb-2 mr-sm-2">
+          <textarea
+            id="description"
+            type="text"
+            class="form-control news-form__info"
+            formControlName="description"
+            placeholder="Описание"
+          ></textarea>
+      </div>
+
+      <div class="upload">
+        <div class="header">
+          <p>Изменение логотипа:</p>
+        </div>
+        <img *ngIf="imagePath" [src]="imagePath" alt="" class="logo-preview">
+        <div class="row margin25">
+          <div class="col-md-12">
+            <div class="input-group">
+              <div class="custom-file">
+                <input
+                  (change)="fileChange($event)"
+                  type="file"
+                  name="logo"
+                  class="custom-file-input upload__input"
+                  id="inputGroupFile01"
+                  aria-describedby="inputGroupFileAddon01"
+                >
+                <label class="upload__label" for="inputGroupFile01" >
+                  Выбрать
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary mb-2" [disabled]="newsForm.invalid" [innerHTML]="newsId ? 'Изменить': 'Добавить'"></button>
+    </form>
+  </mat-sidenav-content>
+</mat-sidenav-container>
