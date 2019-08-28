@@ -35,6 +35,9 @@ import {AngularFontAwesomeModule} from 'angular-font-awesome'
 import localeRu from '@angular/common/locales/ru';
 import {registerLocaleData} from '@angular/common';
 import {NgxPageScrollCoreModule} from 'ngx-page-scroll-core';
+import { NewsComponent } from './components/news/news.component';
+import {StoreNewsEffects} from './store/effects/store-news.effects';
+import { NewsCardComponent } from './components/news/news-card/news-card.component';
 
 registerLocaleData(localeRu);
 
@@ -47,13 +50,20 @@ registerLocaleData(localeRu);
     LoginComponent,
     CommentsComponent,
     ContactsComponent,
-    DeliveryComponent
+    DeliveryComponent,
+    NewsComponent,
+    NewsCardComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     StoreModule.forRoot({...reducers}),
-    EffectsModule.forRoot([AdminUserEffect, CommentsEffects, StoreInfoEffects]),
+    EffectsModule.forRoot([
+      AdminUserEffect,
+      CommentsEffects,
+      StoreInfoEffects,
+      StoreNewsEffects
+    ]),
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,

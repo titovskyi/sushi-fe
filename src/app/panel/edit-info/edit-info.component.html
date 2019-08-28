@@ -1,60 +1,73 @@
-<h3 class="delivery-header-text">Изменить информацию о магазине</h3>
+<mat-sidenav-container class="info row">
+  <mat-sidenav
+    class="col-sm-3 col-md-3 col-lg-3 col-xl-3 info__sidenav"
+    mode="side"
+    opened
+  >
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content
+    class="col-sm-9 col-md-9 col-lg-9 col-xl-9"
+  >
 
-  <form [formGroup]="storeInfoForm" (submit)="changeInfo()" class="delivery mb-4" enctype="multipart/form-data">
-    <label for="city">Город</label>
-    <div class="input-group mb-2 mr-sm-2">
-      <input id="city" type="text" class="form-control" formControlName="city" placeholder="Город">
-    </div>
+    <h3 class="delivery-header-text">Изменить информацию о магазине</h3>
 
-    <label for="delivery_time">Время работы</label>
-    <div class="input-group mb-2 mr-sm-2">
-      <input id="delivery_time" type="text" class="form-control" formControlName="delivery_time" placeholder="Время работы">
-    </div>
-
-    <label for="delivery_info">Информация о доставке</label>
-    <div class="input-group mb-2 mr-sm-2">
-      <textarea
-        id="delivery_info"
-        type="text"
-        class="form-control delivery__info"
-        formControlName="delivery_info"
-        placeholder="Информация о доставке"
-      ></textarea>
-    </div>
-
-    <label for="phone">Телефоны</label>
-    <div class="input-group mb-2 mr-sm-2">
-      <input id="phone" type="text" class="form-control" formControlName="phone" placeholder="Телефоны">
-    </div>
-    <label for="map">Карта</label>
-    <div class="input-group mb-2 mr-sm-2">
-      <input id="map" type="text" class="form-control" formControlName="map" placeholder="Карта">
-    </div>
-    <div class="upload">
-      <div class="header">
-        <p>Изменение логотипа:</p>
-      </div>
-      <img [src]="logoPath" alt="" class="logo-preview">
-      <div class="row margin25">
-        <div class="col-md-12">
-          <div class="input-group">
-            <div class="custom-file">
-              <input
-                (change)="fileChange($event)"
-                type="file"
-                name="logo"
-                class="custom-file-input upload__input"
-                id="inputGroupFile01"
-                aria-describedby="inputGroupFileAddon01"
-              >
-              <label class="upload__label" for="inputGroupFile01" >
-                Выбрать
-              </label>
-            </div>
+      <form [formGroup]="storeInfoForm" (submit)="changeInfo()" class="delivery mb-4" enctype="multipart/form-data">
+        <label for="city">Город</label>
+        <div class="input-group mb-2 mr-sm-2">
+          <input id="city" type="text" class="form-control" formControlName="city" placeholder="Город">
         </div>
-      </div>
-    </div>
-</div>
-    <button type="submit" class="btn btn-primary mb-2">Изменить</button>
-  </form>
 
+        <label for="delivery_time">Время работы</label>
+        <div class="input-group mb-2 mr-sm-2">
+          <input id="delivery_time" type="text" class="form-control" formControlName="delivery_time" placeholder="Время работы">
+        </div>
+
+        <label for="delivery_info">Информация о доставке</label>
+        <div class="input-group mb-2 mr-sm-2">
+          <textarea
+            id="delivery_info"
+            type="text"
+            class="form-control delivery__info"
+            formControlName="delivery_info"
+            placeholder="Информация о доставке"
+          ></textarea>
+        </div>
+
+        <label for="phone">Телефоны</label>
+        <div class="input-group mb-2 mr-sm-2">
+          <input id="phone" type="text" class="form-control" formControlName="phone" placeholder="Телефоны">
+        </div>
+        <label for="map">Карта</label>
+        <div class="input-group mb-2 mr-sm-2">
+          <input id="map" type="text" class="form-control" formControlName="map" placeholder="Карта">
+        </div>
+        <div class="upload">
+          <div class="header">
+            <p>Изменение логотипа:</p>
+          </div>
+          <img [src]="logoPath" alt="" class="logo-preview">
+          <div class="row margin25">
+            <div class="col-md-12">
+              <div class="input-group">
+                <div class="custom-file">
+                  <input
+                    (change)="fileChange($event)"
+                    type="file"
+                    name="logo"
+                    class="custom-file-input upload__input"
+                    id="inputGroupFile01"
+                    aria-describedby="inputGroupFileAddon01"
+                  >
+                  <label class="upload__label" for="inputGroupFile01" >
+                    Выбрать
+                  </label>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+        <button type="submit" class="btn btn-primary mb-2">Изменить</button>
+      </form>
+  </mat-sidenav-content>
+</mat-sidenav-container>

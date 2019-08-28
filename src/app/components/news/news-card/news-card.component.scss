@@ -1,0 +1,43 @@
+$main-color: #e0112f;
+
+.news-card {
+  border-radius: 10px;
+  border: 2px solid transparent;
+  padding: 10px;
+  transition: all ease-in 2ms;
+
+  &__image {
+    width: 100%;
+  }
+
+  &__header {
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  &:hover {
+    border: 2px solid #eeeeee;
+    transition: all ease-in 2ms;
+  }
+
+  &:hover &__header{
+    color: $main-color;
+  }
+}
+
+.link {
+  font-weight: 500;
+
+  &_light {
+    color: #ffffff !important;
+    background: $main-color;
+    border-radius: 17px;
+    padding: 10px 20px;
+    margin: 20px auto;
+    text-align: center;
+    width: 200px;
+    cursor: pointer;
+  }
+}

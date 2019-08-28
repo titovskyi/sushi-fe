@@ -22,13 +22,15 @@ import {EditUserComponent} from './user/edit-user/edit-user.component';
 import {UsersAuthGuard} from '../_guards/users.auth.guard';
 import {CommentComponent} from './comment/comment.component';
 import {EditInfoComponent} from './edit-info/edit-info.component';
+import {AdminNewsComponent} from './admin-news/admin-news.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'products'},
   {path: 'products', component: ProductComponent},
   {path: 'users', component: UserComponent, canActivate: [UsersAuthGuard]},
   {path: 'comments', component: CommentComponent, canActivate: [UsersAuthGuard]},
-  {path: 'store-info', component: EditInfoComponent, canActivate: [UsersAuthGuard]}
+  {path: 'store-info', component: EditInfoComponent, canActivate: [UsersAuthGuard]},
+  {path: 'admin-news', component: AdminNewsComponent, canActivate: [UsersAuthGuard]}
 ];
 
 @NgModule({
@@ -40,7 +42,8 @@ const routes: Routes = [
     AddUserComponent,
     EditUserComponent,
     CommentComponent,
-    EditInfoComponent
+    EditInfoComponent,
+    AdminNewsComponent
   ],
   imports: [
     CommonModule,

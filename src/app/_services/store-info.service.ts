@@ -16,10 +16,10 @@ export class StoreInfoService {
   ) { }
 
   getStoreInfo(): Observable<StoreInfo[]> {
-    return this.http.get<StoreInfo[]>(`${environment.PANEL_STORE_INFO}`);
+    return this.http.get<StoreInfo[]>(`${environment.STORE_INFO}`);
   }
 
   updateStoreInfo(info: StoreInfo): Observable<StoreInfo> {
-    return this.http.patch<StoreInfo>(`${environment.PANEL_STORE_INFO}`, info);
+    return this.http.patch<StoreInfo>(`${environment.STORE_INFO}`, info);
   }
 }

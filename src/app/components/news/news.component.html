@@ -1,0 +1,9 @@
+<div class="container-fluid news-wrapper">
+  <div class="row" >
+    <div *ngFor="let oneNews of storeNews" class=" col-12 col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+      <app-news-card
+        [oneNews]="oneNews"
+      ></app-news-card>
+    </div>
+  </div>
+</div>

@@ -6,6 +6,7 @@ import {AuthGuard} from './_guards/auth.guard';
 import {CommentsComponent} from './components/comments/comments/comments.component';
 import {ContactsComponent} from './components/contacts/contacts.component';
 import {DeliveryComponent} from './components/delivery/delivery.component';
+import {NewsComponent} from './components/news/news.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'comments', component: CommentsComponent},
   {path: 'contacts', component: ContactsComponent},
   {path: 'delivery', component: DeliveryComponent},
+  {path: 'news', component: NewsComponent},
   {
     path: 'panel',
     canActivate: [AuthGuard],

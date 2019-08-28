@@ -59,7 +59,6 @@ export function userReducer(state = initialUserState, action: UsersActions): Use
     }
 
     case UsersActionTypes.REMOVE_USER_SUCCESS: {
-      console.log(action.payload, 'remove');
       return {
         ...state,
         users: state.users.filter(user => user.id !== action.payload)

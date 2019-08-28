@@ -16,18 +16,18 @@ export class UserService {
   ) { }
 
   getAllUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${environment.PANEL_USER}`);
+    return this.http.get<User[]>(`${environment.USER}`);
   }
 
   createUser(newUser: User): Observable<User> {
-    return this.http.post<User>(`${environment.PANEL_USER}`, newUser);
+    return this.http.post<User>(`${environment.USER}`, newUser);
   }
 
   updateUser(user: User): Observable<User> {
-    return this.http.patch<User>(`${environment.PANEL_USER}/${user.id}`, user);
+    return this.http.patch<User>(`${environment.USER}/${user.id}`, user);
   }
 
   removeUser(userId: number) {
-    return this.http.delete<any>(`${environment.PANEL_USER}/${userId}`);
+    return this.http.delete<any>(`${environment.USER}/${userId}`);
   }
 }

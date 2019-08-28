@@ -1,3 +1,16 @@
+.info {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #eee;
+
+  &__sidenav {
+    padding-right: 0;
+  }
+}
+
 .delivery-header-text {
   text-align: center;
 }

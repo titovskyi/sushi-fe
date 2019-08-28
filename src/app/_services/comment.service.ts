@@ -15,14 +15,14 @@ export class CommentService {
   ) { }
 
   getAllComments(): Observable<Comment[]> {
-    return this.http.get<Comment[]>(`${environment.PANEL_COMMENT}`);
+    return this.http.get<Comment[]>(`${environment.COMMENT}`);
   }
 
   createComment(newComment: Comment): Observable<Comment> {
-    return this.http.post<Comment>(`${environment.PANEL_COMMENT}`, newComment);
+    return this.http.post<Comment>(`${environment.COMMENT}`, newComment);
   }
 
   removeComment(commentId: number) {
-    return this.http.delete<any>(`${environment.PANEL_COMMENT}/${commentId}`);
+    return this.http.delete<any>(`${environment.COMMENT}/${commentId}`);
   }
 }

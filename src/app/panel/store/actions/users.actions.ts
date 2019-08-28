@@ -37,9 +37,7 @@ export class GetAllUsersFail implements Action {
 export class CreateUser implements Action {
   readonly type = UsersActionTypes.CREATE_USER;
 
-  constructor(public payload: User) {
-    console.log(payload);
-  }
+  constructor(public payload: User) {}
 }
 
 export class CreateUserSuccess implements Action {
