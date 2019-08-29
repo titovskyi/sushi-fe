@@ -6,11 +6,13 @@ import {adminUserReducer} from './admin-user.reducer';
 import {commentReducer} from './comments.reducer';
 import {storeInfoReducer} from './store-info.reducer';
 import {storeNewsReducer} from './store-news.reducer';
+import {productReducer} from './products.reducer';
 
 export const reducers: ActionReducerMap<AppStateInterface> = {
   router: routerReducer,
   adminUser: adminUserReducer,
   comments: commentReducer,
   info: storeInfoReducer,
-  storeNews: storeNewsReducer
+  storeNews: storeNewsReducer,
+  products: productReducer
 };

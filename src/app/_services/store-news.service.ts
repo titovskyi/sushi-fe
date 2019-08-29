@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {StoreNews} from '../_models/storeNews';
 import {environment} from '../../environments/environment';
 
@@ -30,7 +30,7 @@ export class StoreNewsService {
     return this.http.patch<StoreNews>(`${environment.STORE_NEWS}/${storeNews.id}`, storeNews);
   }
 
-  removeUser(storeNewsId: number): Observable<any> {
+  removeNews(storeNewsId: number): Observable<any> {
     return this.http.delete<any>(`${environment.STORE_NEWS}/${storeNewsId}`);
   }
 }

@@ -26,7 +26,9 @@ export class FooterComponent implements OnInit {
   }
 
   public getLogo() {
-    return `url(${environment.API}/uploads/${this.info.logo})`;
+    if (this.info.logo) {
+      return `url(${environment.API}/uploads/${this.info.logo})`;
+    }
   }
 
   public getPhones() {

@@ -1,10 +1,9 @@
 import {initialStoreNewsState, StoreNewsStateInterface} from '../state/store-news.state';
 import {StoreNewsActions, StoreNewsActionTypes} from '../actions/store-news.action';
 
-export function storeNewsReducer(state=  initialStoreNewsState, action: StoreNewsActions): StoreNewsStateInterface {
+export function storeNewsReducer(state = initialStoreNewsState, action: StoreNewsActions): StoreNewsStateInterface {
   switch (action.type) {
     case StoreNewsActionTypes.LOAD_STORENEWS_SUCCESS: {
-      console.log(action.payload, 'loadAll');
       return {
         ...state,
         loading: false,
@@ -31,7 +30,7 @@ export function storeNewsReducer(state=  initialStoreNewsState, action: StoreNew
         currentStoreNews: action.payload
       };
     }
-  //  TODO ERROR
+    // TODO ERROR
     case StoreNewsActionTypes.LOAD_ONESTORENEWS_FAIL: {
       return {
         ...state,
@@ -91,6 +90,5 @@ export function storeNewsReducer(state=  initialStoreNewsState, action: StoreNew
     default: {
       return state;
     }
-
   }
 }

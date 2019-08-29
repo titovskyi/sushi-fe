@@ -15,12 +15,13 @@ import {environment} from '../../../environments/environment';
 })
 export class EditInfoComponent implements OnInit, OnDestroy {
   public storeInfoForm: FormGroup;
+  public uploadedFile: File;
+  public prevLogoPath: string = null;
+  public logoPath: any = null;
+  public fileName;
+
   private sub: Subscription;
 
-  uploadedFile: File;
-  prevLogoPath: string = null;
-  logoPath: any = null;
-  fileName;
   constructor(
     private fb: FormBuilder,
     private store: Store<AppStateInterface>,
@@ -30,12 +31,12 @@ export class EditInfoComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.storeInfoForm = this.fb.group({
-      city: [''],
-      delivery_time: [''],
-      delivery_info: [''],
-      map: [''],
-      logo: [''],
-      phone: ['']
+      city: ['', Validators.required],
+      delivery_time: ['', Validators.required],
+      delivery_info: ['', Validators.required],
+      map: ['', Validators.required],
+      logo: ['', Validators.required],
+      phone: ['', Validators.required]
     });
 
     // this.store.dispatch(new GetStoreInfo());

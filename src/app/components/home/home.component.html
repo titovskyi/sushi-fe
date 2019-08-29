@@ -14,46 +14,21 @@
   </div>
   <div class="row">
     <div class="col-xl-12">
-      <h5><a class="anchor" id="sushi" #sushi></a>Header Sushi</h5>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet delectus doloremque eaque facilis illo impedit ipsa labore maxime omnis quos repellendus saepe sequi sit suscipit temporibus, ut vel voluptate, voluptatum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet delectus doloremque eaque facilis illo impedit ipsa labore maxime omnis quos repellendus saepe sequi sit suscipit temporibus, ut vel voluptate, voluptatum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet delectus doloremque eaque facilis illo impedit ipsa labore maxime omnis quos repellendus saepe sequi sit suscipit temporibus, ut vel voluptate, voluptatum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet delectus doloremque eaque facilis illo impedit ipsa labore maxime omnis quos repellendus saepe sequi sit suscipit temporibus, ut vel voluptate, voluptatum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet delectus doloremque eaque facilis illo impedit ipsa labore maxime omnis quos repellendus saepe sequi sit suscipit temporibus, ut vel voluptate, voluptatum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet delectus doloremque eaque facilis illo impedit ipsa labore maxime omnis quos repellendus saepe sequi sit suscipit temporibus, ut vel voluptate, voluptatum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet delectus doloremque eaque facilis illo impedit ipsa labore maxime omnis quos repellendus saepe sequi sit suscipit temporibus, ut vel voluptate, voluptatum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet delectus doloremque eaque facilis illo impedit ipsa labore maxime omnis quos repellendus saepe sequi sit suscipit temporibus, ut vel voluptate, voluptatum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet delectus doloremque eaque facilis illo impedit ipsa labore maxime omnis quos repellendus saepe sequi sit suscipit temporibus, ut vel voluptate, voluptatum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet delectus doloremque eaque facilis illo impedit ipsa labore maxime omnis quos repellendus saepe sequi sit suscipit temporibus, ut vel voluptate, voluptatum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet delectus doloremque eaque facilis illo impedit ipsa labore maxime omnis quos repellendus saepe sequi sit suscipit temporibus, ut vel voluptate, voluptatum.</p>
+      <div class="container-fluid news-wrapper">
+        <div class="row" >
+          <div *ngFor="let product of products" class=" col-12 col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+            <app-product-card
+              [product]="product"
+            ></app-product-card>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="col-xl-12">
       <h5><a class="anchor" id="rolls" #rolls></a>Header Rolls</h5>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet delectus doloremque eaque facilis illo impedit ipsa labore maxime omnis quos repellendus saepe sequi sit suscipit temporibus, ut vel voluptate, voluptatum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet delectus doloremque eaque facilis illo impedit ipsa labore maxime omnis quos repellendus saepe sequi sit suscipit temporibus, ut vel voluptate, voluptatum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet delectus doloremque eaque facilis illo impedit ipsa labore maxime omnis quos repellendus saepe sequi sit suscipit temporibus, ut vel voluptate, voluptatum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet delectus doloremque eaque facilis illo impedit ipsa labore maxime omnis quos repellendus saepe sequi sit suscipit temporibus, ut vel voluptate, voluptatum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet delectus doloremque eaque facilis illo impedit ipsa labore maxime omnis quos repellendus saepe sequi sit suscipit temporibus, ut vel voluptate, voluptatum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet delectus doloremque eaque facilis illo impedit ipsa labore maxime omnis quos repellendus saepe sequi sit suscipit temporibus, ut vel voluptate, voluptatum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet delectus doloremque eaque facilis illo impedit ipsa labore maxime omnis quos repellendus saepe sequi sit suscipit temporibus, ut vel voluptate, voluptatum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet delectus doloremque eaque facilis illo impedit ipsa labore maxime omnis quos repellendus saepe sequi sit suscipit temporibus, ut vel voluptate, voluptatum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet delectus doloremque eaque facilis illo impedit ipsa labore maxime omnis quos repellendus saepe sequi sit suscipit temporibus, ut vel voluptate, voluptatum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet delectus doloremque eaque facilis illo impedit ipsa labore maxime omnis quos repellendus saepe sequi sit suscipit temporibus, ut vel voluptate, voluptatum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet delectus doloremque eaque facilis illo impedit ipsa labore maxime omnis quos repellendus saepe sequi sit suscipit temporibus, ut vel voluptate, voluptatum.</p>
     </div>
     <div class="col-xl-12">
       <h5><a class="anchor" id="sets" #sets></a>Header Sets</h5>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet delectus doloremque eaque facilis illo impedit ipsa labore maxime omnis quos repellendus saepe sequi sit suscipit temporibus, ut vel voluptate, voluptatum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet delectus doloremque eaque facilis illo impedit ipsa labore maxime omnis quos repellendus saepe sequi sit suscipit temporibus, ut vel voluptate, voluptatum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet delectus doloremque eaque facilis illo impedit ipsa labore maxime omnis quos repellendus saepe sequi sit suscipit temporibus, ut vel voluptate, voluptatum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet delectus doloremque eaque facilis illo impedit ipsa labore maxime omnis quos repellendus saepe sequi sit suscipit temporibus, ut vel voluptate, voluptatum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet delectus doloremque eaque facilis illo impedit ipsa labore maxime omnis quos repellendus saepe sequi sit suscipit temporibus, ut vel voluptate, voluptatum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet delectus doloremque eaque facilis illo impedit ipsa labore maxime omnis quos repellendus saepe sequi sit suscipit temporibus, ut vel voluptate, voluptatum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet delectus doloremque eaque facilis illo impedit ipsa labore maxime omnis quos repellendus saepe sequi sit suscipit temporibus, ut vel voluptate, voluptatum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet delectus doloremque eaque facilis illo impedit ipsa labore maxime omnis quos repellendus saepe sequi sit suscipit temporibus, ut vel voluptate, voluptatum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet delectus doloremque eaque facilis illo impedit ipsa labore maxime omnis quos repellendus saepe sequi sit suscipit temporibus, ut vel voluptate, voluptatum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet delectus doloremque eaque facilis illo impedit ipsa labore maxime omnis quos repellendus saepe sequi sit suscipit temporibus, ut vel voluptate, voluptatum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet delectus doloremque eaque facilis illo impedit ipsa labore maxime omnis quos repellendus saepe sequi sit suscipit temporibus, ut vel voluptate, voluptatum.</p>
     </div>
   </div>
 </div>

@@ -20,6 +20,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDialogModule} from '@angular/material/dialog';
 import {JwtInterceptor} from './_helpers/jwt.interceptor';
 import { CommentsComponent } from './components/comments/comments/comments.component';
 import {CommentsEffects} from './store/effects/comments.effects';
@@ -47,6 +48,11 @@ registerLocaleData(localeRu);
 
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { NewsPopupComponent } from './components/news/news-popup/news-popup.component';
+import {ProductsEffects} from "./store/effects/products.effects";
+import { ProductCardComponent } from './components/home/product-card/product-card.component';
+import { ProductPopupComponent } from './components/home/product-popup/product-popup.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +64,11 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     ContactsComponent,
     DeliveryComponent,
     NewsComponent,
-    NewsCardComponent
+    NewsCardComponent,
+    NewsPopupComponent,
+    ProductCardComponent,
+    ProductPopupComponent,
+    PageNotFoundComponent
   ],
   imports: [
     HttpClientModule,
@@ -68,7 +78,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
       AdminUserEffect,
       CommentsEffects,
       StoreInfoEffects,
-      StoreNewsEffects
+      StoreNewsEffects,
+      ProductsEffects
     ]),
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -79,6 +90,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     ReactiveFormsModule,
     MatButtonModule,
     MatFormFieldModule,
+    MatDialogModule,
     CollapseModule.forRoot(),
     AngularFontAwesomeModule,
     NgxPageScrollCoreModule,
@@ -88,6 +100,10 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: LOCALE_ID, useValue: 'RU' }
+  ],
+  entryComponents: [
+    NewsPopupComponent,
+    ProductPopupComponent
   ],
   bootstrap: [AppComponent]
 })

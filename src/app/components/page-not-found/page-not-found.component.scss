@@ -1,0 +1,10 @@
+.wrapper {
+  min-height: calc(100vh - 110px - 115px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+img {
+  width: 300px;
+}

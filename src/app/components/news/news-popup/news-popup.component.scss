@@ -1,0 +1,42 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+
+  img {
+    width: 45%;
+    max-height: 350px;
+
+    @media screen and (max-width: 500px) {
+      width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+    padding: 0;
+  }
+}
+
+.info {
+  width: 50%;
+
+  &__header {
+    font-weight: 800;
+    margin-bottom: 20px;
+
+    @media screen and (max-width: 500px) {
+      margin-top: 20px;
+      text-align: center;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    width: 100%;
+  }
+}
+
+.mat-dialog-container {
+
+}

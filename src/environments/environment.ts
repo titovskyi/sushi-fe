@@ -7,6 +7,7 @@ export const environment = {
   API: 'http://localhost:3000',
   USER: 'http://localhost:3000/api/user',
   COMMENT: 'http://localhost:3000/api/comment',
+  PRODUCT: 'http://localhost:3000/api/product',
   STORE_INFO: 'http://localhost:3000/api/info',
   STORE_NEWS: 'http://localhost:3000/api/news'
 };

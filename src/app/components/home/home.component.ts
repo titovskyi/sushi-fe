@@ -2,6 +2,12 @@ import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from
 import {ActivatedRoute} from '@angular/router';
 import {NavigationService} from '../../_services/navigation.service';
 import {Subscription} from 'rxjs';
+import {Store} from "@ngrx/store";
+import {AppStateInterface} from "../../store/state/app.state";
+import {GetProducts} from "../../store/actions/products.action";
+import {Product} from "../../_models/product";
+import {environment} from '../../../environments/environment';
+import {log} from 'util';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +15,8 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
+  public products: Product[] = null;
+
   private fragment: string;
   private sub: Subscription;
 
@@ -21,7 +29,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private navService: NavigationService
+    private navService: NavigationService,
+    private store: Store<AppStateInterface>
   ) {
     this.sub = this.navService.getAnchorValue().subscribe((value) => {
       if (value) {
@@ -40,10 +49,19 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         }
       }
     });
+
+    this.store.dispatch(new GetProducts());
+    this.store.subscribe((res) => {
+      this.products = res.products.products;
+      this.products.forEach((item) => {
+        if (item && item.product_image) {
+          item.product_image = `${environment.API}/uploads/${item.product_image}`;
+        }
+      });
+    });
   }
 
   ngOnInit() {
-    console.log(this.sushiAnchor, 'sushiAnchor');
     this.route.fragment.subscribe(fragment => { this.fragment = fragment; });
   }
 

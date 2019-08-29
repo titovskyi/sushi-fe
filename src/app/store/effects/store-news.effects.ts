@@ -75,7 +75,7 @@ export class StoreNewsEffects {
     ofType<RemoveNews>(StoreNewsActionTypes.REMOVE_STORENEWS),
     map((action: any) => action.payload),
     mergeMap((storeNewsId: number) => {
-      return this.storeNewsService.removeUser(storeNewsId).pipe(
+      return this.storeNewsService.removeNews(storeNewsId).pipe(
         map((result: any) => new RemoveNewsSuccess(storeNewsId)),
         catchError((err) => of(new RemoveNewsFail(err)))
       );

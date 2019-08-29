@@ -20,12 +20,12 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let item of news" routerLink="/panel/add-edit-news/{{item.id}}" >
-        <td scope="row">
+      <tr *ngFor="let item of news" >
+        <td scope="row"  routerLink="/panel/add-edit-news/{{item.id}}">
           <img [src]="getSafeUrl(item.image)" class="list-news-image">
         </td>
-        <td>{{item.header}}</td>
-        <td>{{item.description}}</td>
+        <td  routerLink="/panel/add-edit-news/{{item.id}}">{{item.header}}</td>
+        <td  routerLink="/panel/add-edit-news/{{item.id}}">{{item.description}}</td>
         <th (click)="removeNews(item.id)">
           <a class="user-table__link"><i class="fa fa-trash" aria-hidden="true"></i></a>
         </th>

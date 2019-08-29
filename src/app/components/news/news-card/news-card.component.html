@@ -1,8 +1,6 @@
-<div class="news-card">
-  <div >
-    <img class="news-card__image" src="../../../../assets/logo.jpg" alt="">
+<div class="news-card" (click)="showNewsPopup()">
+  <div>
+    <img class="news-card__image" [src]="oneNews?.image" alt="">
   </div>
   <div class="news-card__header" [innerHTML]="oneNews?.header"></div>
-<!--  <div class="news-card__description" [innerHTML]="oneNews?.description"></div>-->
-  <a class="nav-link link link_light">Подробнее</a>
 </div>

@@ -1,5 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {StoreNews} from '../../../_models/storeNews';
+import {NewsPopupComponent} from '../news-popup/news-popup.component';
+import {MatDialog} from '@angular/material/dialog';
+import {environment} from '../../../../environments/environment';
 
 @Component({
   selector: 'app-news-card',
@@ -9,10 +12,18 @@ import {StoreNews} from '../../../_models/storeNews';
 export class NewsCardComponent implements OnInit {
   @Input() oneNews: StoreNews;
 
-  constructor() { }
+  constructor(
+    public dialog: MatDialog
+  ) { }
 
   ngOnInit() {
-    console.log(this.oneNews, 'CARD Component')
+  }
+
+  showNewsPopup() {
+    const dialogRef = this.dialog.open(NewsPopupComponent, {
+      width: '80%',
+      data: this.oneNews
+    });
   }
 
 }
