@@ -16,6 +16,11 @@ import {log} from 'util';
 })
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   public products: Product[] = null;
+  public sushi: Product[] = null;
+  public rolls: Product[] = null;
+  public sets: Product[] = null;
+  public drinks: Product[] = null;
+  public spices: Product[] = null;
 
   private fragment: string;
   private sub: Subscription;
@@ -58,6 +63,23 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
           item.product_image = `${environment.API}/uploads/${item.product_image}`;
         }
       });
+      this.sushi = this.products.filter((item) => item.category === 'Суши');
+      this.rolls = this.products.filter((item) => item.category === 'Роллы');
+      this.sets = this.products.filter((item) => item.category === 'Сеты');
+      this.drinks = this.products.filter((item) => item.category === 'Напитки');
+      this.spices = this.products.filter((item) => item.category === 'Специи');
+
+      const subSushi = [...new Set(this.sushi.map(item => item.sub_category))];
+      const subRolls = [...new Set(this.rolls.map(item => item.sub_category))];
+      const subSets = [...new Set(this.sets.map(item => item.sub_category))];
+      const subDrinks = [...new Set(this.drinks.map(item => item.sub_category))];
+      const subSpices = [...new Set(this.spices.map(item => item.sub_category))];
+
+      console.log(this.products);
+      console.log(this.sushi);
+      console.log(this.rolls);
+      console.log(subRolls);
+      console.log(subSushi);
     });
   }
 

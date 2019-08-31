@@ -1,0 +1,39 @@
+<mat-sidenav-container class="products row">
+  <mat-sidenav
+    class="col-sm-3 col-md-3 col-lg-3 col-xl-3 products__sidenav"
+    mode="side"
+    opened
+  >
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content
+    class="col-sm-9 col-md-9 col-lg-9 col-xl-9"
+  >
+    <button type="button" class="btn btn-primary mb-2 mt-2" routerLink="/panel/add-edit-product">Добавить</button>
+    <table class="table table-hover product-table">
+      <thead>
+      <tr>
+        <th scope="col">Изображение</th>
+        <th scope="col">Название</th>
+        <th scope="col">Категория</th>
+        <th scope="col">Цена</th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td routerLink="/panel/add-edit-product/{{product.id}}">
+            <img [src]="getSafeUrl(product.product_image)" class="product-image">
+          </td>
+          <td routerLink="/panel/add-edit-product/{{product.id}}">{{product.name}}</td>
+          <td routerLink="/panel/add-edit-product/{{product.id}}">{{product.category}}</td>
+          <td>{{product.price}}</td>
+          <th (click)="removeProduct(product.id)">
+            <a class="product-table__link"><i class="fa fa-trash" aria-hidden="true"></i></a>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

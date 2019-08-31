@@ -3,7 +3,8 @@
     <mat-card-title class="login__header">Необходим Вход</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <form class="form" [formGroup]="loginForm">
+    <form class="form" [formGroup]="loginForm" (keyup.enter)="login()"
+    >
       <mat-form-field class="form__item">
         <input matInput placeholder="Логин" formControlName="login">
         <mat-error *ngIf="userLogin.errors?.minlength">
@@ -31,7 +32,6 @@
       color="primary"
       [disabled]="!loginForm.valid"
       (click)="login()"
-      (keyup.enter)="login()"
     >
       Войти
     </button>

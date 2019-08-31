@@ -1,0 +1,32 @@
+.news {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #eee;
+
+  &__sidenav {
+    padding-right: 0;
+  }
+}
+
+.news-table {
+
+  &__link {
+    cursor: pointer;
+  }
+}
+
+.table tr {
+  cursor: pointer;
+}
+
+.table td, .table th {
+  vertical-align: middle;
+  outline: none;
+}
+
+.list-news-image {
+  width: 100px;
+}

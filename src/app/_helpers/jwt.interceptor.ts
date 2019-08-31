@@ -16,11 +16,11 @@ export class JwtInterceptor implements HttpInterceptor {
   ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
-    const token = this.authService.getToken() || '111';
+    const token = this.authService.getToken();
     const expireTime = this.authService.getExpiration();
 
     // @ts-ignore
-    if (Date.now() - localStorage.getItem('expire') > 3600000) {
+    if (Date.now() - expireTime > 3600000) {
       localStorage.clear();
       this.router.navigateByUrl('/login');
     }

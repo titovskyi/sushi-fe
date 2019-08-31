@@ -15,19 +15,24 @@ import {MatIconModule} from '@angular/material/icon';
 import {UserComponent} from './user/user.component';
 import {SidebarComponent} from './sidebar/sidebar.component';
 import {AdminComponent} from './admin/admin.component';
-import {ProductComponent} from './product/product.component';
 import {UsersEffects} from './store/effects/users.effects';
 import {AddUserComponent} from './user/add-user/add-user.component';
 import {EditUserComponent} from './user/edit-user/edit-user.component';
 import {UsersAuthGuard} from '../_guards/users.auth.guard';
 import {CommentComponent} from './comment/comment.component';
 import {EditInfoComponent} from './edit-info/edit-info.component';
-import {ListNewsComponent} from './admin-news/list-news/list-news';
+import {ListNewsComponent} from './admin-news/list-news/list-news.component';
+
 import { AddEditNewsComponent } from './admin-news/add-edit-news/add-edit-news.component';
+import { ListProductComponent } from './product/list-product/list-product.component';
+import { AddEditProductComponent } from './product/add-edit-product/add-edit-product.component';
+import {AuthGuard} from '../_guards/auth.guard';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'products'},
-  {path: 'products', component: ProductComponent},
+  {path: 'products', component: ListProductComponent},
+  {path: 'add-edit-product', component: AddEditProductComponent, canActivate: [AuthGuard]},
+  {path: 'add-edit-product/:id', component: AddEditProductComponent, canActivate: [AuthGuard]},
   {path: 'users', component: UserComponent, canActivate: [UsersAuthGuard]},
   {path: 'comments', component: CommentComponent, canActivate: [UsersAuthGuard]},
   {path: 'store-info', component: EditInfoComponent, canActivate: [UsersAuthGuard]},
@@ -41,13 +46,14 @@ const routes: Routes = [
     UserComponent,
     SidebarComponent,
     AdminComponent,
-    ProductComponent,
     AddUserComponent,
     EditUserComponent,
     CommentComponent,
     EditInfoComponent,
     ListNewsComponent,
-    AddEditNewsComponent
+    AddEditNewsComponent,
+    ListProductComponent,
+    AddEditProductComponent
   ],
   imports: [
     CommonModule,

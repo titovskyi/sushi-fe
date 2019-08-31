@@ -1,4 +1,4 @@
-.news {
+.products {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -11,7 +11,7 @@
   }
 }
 
-.user-table {
+.product-table {
 
   &__link {
     cursor: pointer;
@@ -24,8 +24,9 @@
 
 .table td, .table th {
   vertical-align: middle;
+  outline: none;
 }
 
-.list-news-image {
+.product-image {
   width: 100px;
 }

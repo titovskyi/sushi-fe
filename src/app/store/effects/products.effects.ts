@@ -73,7 +73,8 @@ export class ProductsEffects {
   // @ts-ignore
   removeProduct$: Observable<Action> = this.action$.pipe(
     ofType<RemoveProduct>(ProductsActionTypes.REMOVE_PRODUCT),
-    map((productId: any) => {
+    map((action: any) => action.payload),
+    mergeMap((productId: any) => {
       return this.productService.removeProduct(productId).pipe(
         map((result: any) => new RemoveProductSuccess(productId)),
         catchError((err) => of(new RemoveProductFail(err)))

@@ -11,7 +11,7 @@ export const initialStoreNewsState: StoreNewsStateInterface = {
   storeNews: [
     {id: 0, header: '', description: '', image: ''}
   ],
-  currentStoreNews: null,
+  currentStoreNews: {id: null, header: '', description: '', image: ''},
   loading: false,
   loaded: true
 };

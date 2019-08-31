@@ -9,9 +9,28 @@ export interface ProductStateInterface {
 }
 
 export const initialProductsState: ProductStateInterface = {
-  products: [null],
+  products: [
+    {
+      id: null,
+      name: '',
+      category: '',
+      sub_category: '',
+      product_image: '',
+      price: null,
+      consist: ''
+    }
+  ],
   orderedProducts: [null],
-  currentProduct: null,
+  currentProduct:
+    {
+      id: null,
+      name: '',
+      category: '',
+      sub_category: '',
+      product_image: '',
+      price: null,
+      consist: ''
+    },
   loading: false,
   loaded: true
 };

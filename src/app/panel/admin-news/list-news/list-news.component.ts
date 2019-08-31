@@ -6,12 +6,11 @@ import {AppStateInterface} from '../../../store/state/app.state';
 import {GetAllNews, RemoveNews} from '../../../store/actions/store-news.action';
 import {environment} from '../../../../environments/environment';
 import {DomSanitizer} from '@angular/platform-browser';
-import {FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-news',
-  templateUrl: './list-news.html',
-  styleUrls: ['./list-news.scss']
+  templateUrl: './list-news.component.html',
+  styleUrls: ['./list-news.component.scss']
 })
 export class ListNewsComponent implements OnInit {
   public news: StoreNews[];

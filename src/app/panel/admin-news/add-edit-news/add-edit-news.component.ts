@@ -37,24 +37,25 @@ export class AddEditNewsComponent implements OnInit {
       description: ['', Validators.required],
       image: ['']
     });
-
   }
 
   ngOnInit() {
     if (this.newsId) {
       this.store.dispatch(new GetOneNews(Number(this.newsId)));
       this.store.subscribe((res) => {
-        const newsInfo = res.storeNews.currentStoreNews;
-        this.prevImage = newsInfo.image;
+        if (res.storeNews.currentStoreNews.id) {
+          const newsInfo = res.storeNews.currentStoreNews;
+          this.prevImage = newsInfo.image;
 
-        this.newsForm = this.fb.group({
-          id: [newsInfo.id],
-          header: [newsInfo.header, Validators.required],
-          description: [newsInfo.description, Validators.required],
-          image: [newsInfo.image]
-        });
+          this.newsForm = this.fb.group({
+            id: [newsInfo.id],
+            header: [newsInfo.header, Validators.required],
+            description: [newsInfo.description, Validators.required],
+            image: [newsInfo.image]
+          });
 
-        this.imagePath = this.getSafeUrl(newsInfo.image);
+          this.imagePath = this.getSafeUrl(newsInfo.image);
+        }
       });
     }
   }
