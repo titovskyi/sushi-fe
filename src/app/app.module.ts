@@ -29,7 +29,7 @@ import { DeliveryComponent } from './components/delivery/delivery.component';
 import {StoreInfoEffects} from './store/effects/store-info.effects';
 import {HeaderComponent} from './components/header/header.component';
 import {FooterComponent} from './components/footer/footer.component';
-
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 
 import { CollapseModule } from 'ngx-bootstrap/collapse';
@@ -95,7 +95,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     AngularFontAwesomeModule,
     NgxPageScrollCoreModule,
     CarouselModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    ButtonsModule.forRoot()
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

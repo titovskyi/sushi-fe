@@ -2,7 +2,7 @@ import {Product} from '../../_models/product';
 
 export interface ProductStateInterface {
   products: Product[];
-  orderedProducts: Product[];
+  orderedProducts: any[];
   currentProduct: Product;
   loading: boolean;
   loaded: boolean;
@@ -20,7 +20,7 @@ export const initialProductsState: ProductStateInterface = {
       consist: ''
     }
   ],
-  orderedProducts: [null],
+  orderedProducts: [],
   currentProduct:
     {
       id: null,

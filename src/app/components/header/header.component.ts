@@ -19,6 +19,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public isCollapsed = true;
   public routingValue: boolean;
   public info: StoreInfo;
+  public orderQuantity = 0;
+  public orderPrice = 0;
 
   private sub: Subscription;
 
@@ -37,6 +39,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.sub = this.store.subscribe((res: AppStateInterface) => {
       this.info = res.info.info;
+      this.orderQuantity = 0;
+      this.orderPrice = 0;
+      res.products.orderedProducts.forEach((product) => {
+        this.orderQuantity += +product.quantity;
+        this.orderPrice += +product.quantity * product.price;
+      });
     });
   }
 

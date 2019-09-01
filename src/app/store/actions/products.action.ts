@@ -121,6 +121,12 @@ export class RemoveProductFail implements Action {
   constructor(public payload: string) {}
 }
 
+export class AddOrderedProduct implements Action {
+  readonly type = ProductsActionTypes.ADD_ORDERED_PRODUCT;
+
+  constructor(public payload: any[]) {}
+}
+
 export type ProductsActions =
   GetProducts |
   GetProductsSuccess |
@@ -136,4 +142,5 @@ export type ProductsActions =
   UpdateProductFail |
   RemoveProduct |
   RemoveProductSuccess |
-  RemoveProductFail;
+  RemoveProductFail |
+  AddOrderedProduct;

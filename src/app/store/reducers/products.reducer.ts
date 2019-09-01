@@ -92,6 +92,13 @@ export function productReducer(state = initialProductsState, action: ProductsAct
       };
     }
 
+    case ProductsActionTypes.ADD_ORDERED_PRODUCT: {
+      return {
+        ...state,
+        orderedProducts: action.payload
+      };
+    }
+
     default: {
       return state;
     }

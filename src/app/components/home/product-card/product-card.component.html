@@ -1,6 +1,11 @@
-<div class="product-card" (click)="showNewsPopup()">
+<div class="product-card" (click)="showProductPopup()">
   <div>
     <img class="product-card__image" [src]="product?.product_image" alt="">
   </div>
+  <div class="product-card__consist" [innerHTML]="product?.consist"></div>
   <div class="product-card__header" [innerHTML]="product?.name"></div>
+  <div class="product-card__action">
+    <span class="btn product-card__button" (click)="orderProduct(product)">В корзину</span>
+    <div class="product-cart__price" [innerHTML]="product?.price + ' ₴'"></div>
+  </div>
 </div>

@@ -5,7 +5,7 @@ $main-color: #e0112f;
   border: 2px solid transparent;
   padding: 10px;
   transition: all ease-in 2ms;
-  height: 350px;
+  min-height: 350px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -16,12 +16,39 @@ $main-color: #e0112f;
     max-height: 250px;
   }
 
+  &__consist {
+    color: #918686;
+    font-size: 12px;
+  }
+
   &__header {
     font-weight: 600;
     font-size: 20px;
     text-align: center;
     margin-top: 20px;
     margin-bottom: 30px;
+  }
+
+  &__action {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  &__button {
+    width: 50%;
+    background-color: $main-color;
+    color: #ffffff;
+    border-radius: 20px;
+    z-index: 999;
+
+    &:hover {
+      background-color: #ff3351;
+    }
+  }
+
+  &__price {
+    width: 40%;
   }
 
   &:hover {
@@ -48,3 +75,4 @@ $main-color: #e0112f;
     cursor: pointer;
   }
 }
+

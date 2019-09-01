@@ -24,8 +24,8 @@
         <td scope="row"  routerLink="/panel/add-edit-news/{{item.id}}">
           <img [src]="getSafeUrl(item.image)" class="list-news-image">
         </td>
-        <td  routerLink="/panel/add-edit-news/{{item.id}}">{{item.header}}</td>
-        <td  routerLink="/panel/add-edit-news/{{item.id}}">{{item.description}}</td>
+        <td routerLink="/panel/add-edit-news/{{item.id}}">{{item.header}}</td>
+        <td routerLink="/panel/add-edit-news/{{item.id}}">{{item.description}}</td>
         <th (click)="removeNews(item.id)">
           <a class="news-table__link"><i class="fa fa-trash" aria-hidden="true"></i></a>
         </th>
