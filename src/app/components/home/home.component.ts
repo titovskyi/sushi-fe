@@ -2,10 +2,10 @@ import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from
 import {ActivatedRoute} from '@angular/router';
 import {NavigationService} from '../../_services/navigation.service';
 import {Subscription} from 'rxjs';
-import {Store} from "@ngrx/store";
-import {AppStateInterface} from "../../store/state/app.state";
-import {GetProducts} from "../../store/actions/products.action";
-import {Product} from "../../_models/product";
+import {Store} from '@ngrx/store';
+import {AppStateInterface} from '../../store/state/app.state';
+import {GetProducts} from '../../store/actions/products.action';
+import {Product} from '../../_models/product';
 import {environment} from '../../../environments/environment';
 import {log} from 'util';
 
@@ -69,9 +69,16 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
           case this.rollsAnchor.nativeElement.id:
             document.querySelector('#' + this.rollsAnchor.nativeElement.id).scrollIntoView();
             break;
+          case this.drinksAnchor.nativeElement.id:
+            document.querySelector('#' + this.drinksAnchor.nativeElement.id).scrollIntoView();
+            break;
           case this.setsAnchor.nativeElement.id:
             document.querySelector('#' + this.setsAnchor.nativeElement.id).scrollIntoView();
             break;
+          case this.spicesAnchor.nativeElement.id:
+            document.querySelector('#' + this.spicesAnchor.nativeElement.id).scrollIntoView();
+            break;
+
           default:
             return;
         }

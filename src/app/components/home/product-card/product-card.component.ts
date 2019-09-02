@@ -25,7 +25,6 @@ export class ProductCardComponent implements OnInit {
   ngOnInit() {
     this.store.subscribe((res) => {
       this.orderedProducts = res.products.orderedProducts;
-      console.log(this.orderedProducts);
     });
   }
 
