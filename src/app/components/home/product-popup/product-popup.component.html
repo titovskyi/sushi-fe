@@ -1,1 +1,32 @@
-<p>product-popup works!</p>
+<div class="row">
+  <img class="image col-sm-6 col-md-6 col-lg-6 col-xl-6" [src]="data.product_image">
+  <div class="info col-12 col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+    <p class="info__consist">{{data.consist}}</p>
+    <h3 class="info__name">{{data.name}}</h3>
+    <div class="free">
+      <div>
+        <img src="../../../../assets/vasabi.png" alt="" class="free__image">
+        <span class="free__name">Васаби</span>
+      </div>
+      <div class="free__cost">Бесплатно</div>
+    </div>
+    <div class="free">
+      <div>
+        <img src="../../../../assets/imbir.png" alt="" class="free__image">
+        <span class="free__name">Имбирь</span>
+      </div>
+      <div class="free__cost">Бесплатно</div>
+    </div>
+    <div class="free">
+      <div>
+        <img src="../../../../assets/soevyj-sous.jpg" alt="" class="free__image">
+        <span class="free__name">Соевый соус</span>
+      </div>
+      <div class="free__cost">Бесплатно</div>
+    </div>
+    <div class="info__action">
+      <span class="btn info__button" (click)="orderProduct(data)">В корзину</span>
+      <div class="info__price" [innerHTML]="data?.price + ' ₴'"></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,68 @@
+$main-color: #e0112f;
+
+.image {
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+
+
+}
+
+.info {
+
+  &__consist {
+    color: rgba(21, 22, 25, 0.5);
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  &__name {
+    margin-bottom: 40px;
+  }
+
+  &__action {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 40px;
+  }
+
+  &__price {
+    width: 40%;
+    font-size: 36px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  &__button {
+    background-color: $main-color;
+    color: #ffffff;
+    border-radius: 20px;
+
+    &:hover {
+      background-color: #ff3351;
+    }
+  }
+}
+
+.free {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+
+  &__image {
+    width: 50px;
+    margin-right: 10px;
+  }
+
+  &__name {
+    font-size: 14px;
+  }
+
+  &__cost {
+    color: rgba(21, 22, 25, 0.5);
+    font-size: 14px;
+  }
+}

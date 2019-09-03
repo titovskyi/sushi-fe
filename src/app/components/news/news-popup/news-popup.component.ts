@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {StoreNews} from "../../../_models/storeNews";
+import {StoreNews} from '../../../_models/storeNews';
 
 @Component({
   selector: 'app-news-popup',
