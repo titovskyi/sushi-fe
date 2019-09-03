@@ -82,6 +82,7 @@ export class ProductService {
   }
 
   updateProduct(product: Product): Observable<Product> {
+    console.log(product);
     return this.http.patch<Product>(`${environment.PRODUCT}/${product.id}`, product);
   }
 

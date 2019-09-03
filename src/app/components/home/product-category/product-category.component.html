@@ -1,0 +1,56 @@
+  <div class="sub-category">
+    <label
+      class="sub-category__item"
+      [(ngModel)]="filterValue"
+      (ngModelChange)="filterProducts($event)"
+      btnRadio="Все"
+      [innerHTML]="'Все'"
+      role = "Button"
+      tabindex="0"
+    ></label>
+    <ng-container *ngFor="let sub of filterValues">
+      <label
+        *ngIf="sub"
+        class="sub-category__item"
+        [(ngModel)]="filterValue"
+        (ngModelChange)="filterProducts($event)"
+        btnRadio="{{sub}}"
+        tabindex="0"
+        role="button"
+        [innerHTML]="sub"
+      ></label>
+    </ng-container>
+
+  </div>
+  <div class="products-category d-flex justify-content-around flex-wrap">
+    <ng-container *ngIf="!showAll">
+      <div
+        *ngFor="let product of filteredProducts | slice:0:4"
+        class="col-12 col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3"
+      >
+        <app-product-card
+          class="w-100"
+          [product]="product"
+        ></app-product-card>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="showAll">
+      <div
+        *ngFor="let product of filteredProducts"
+        class="col-12 col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3"
+      >
+        <app-product-card
+          class="w-100"
+          [product]="product"
+        ></app-product-card>
+      </div>
+    </ng-container>
+  </div>
+  <div class="show-button-wrap">
+    <div
+      *ngIf="productByCategory.length > 4"
+      class="show-button"
+      (click)="showHide()"
+      [innerHTML]="showAll ? 'Скрыть' : 'Показать все'"
+    ></div>
+  </div>

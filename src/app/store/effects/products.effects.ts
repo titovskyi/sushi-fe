@@ -59,7 +59,7 @@ export class ProductsEffects {
   @Effect()
   // @ts-ignore
   updateProduct$: Observable<Action> = this.action$.pipe(
-    ofType<CreateProduct>(ProductsActionTypes.CREATE_PRODUCT),
+    ofType<CreateProduct>(ProductsActionTypes.UPDATE_PRODUCT),
     map((action: any) => action.payload),
     mergeMap((currentProduct: Product) => {
       return this.productService.updateProduct(currentProduct).pipe(

@@ -13,245 +13,43 @@
     </carousel>
   </div>
   <div class="row">
-    <div class="col-xl-12" *ngIf="sushiProd.length">
+    <div class="col-xl-12" [class.show]="!sushiProd.length">
       <div class="container-fluid">
-        <div class="row product-wrapper">
+        <div class="product-wrapper">
           <h5><a class="anchor" id="sushi" #sushi></a>Суши</h5>
-          <div class="sub-category">
-            <label
-              class="sub-category__item"
-              [(ngModel)]="sushiFilter"
-              (ngModelChange)="filterSushi($event)"
-              btnRadio="Все"
-              [innerHTML]="'Все'"
-              role = "Button"
-              tabindex="0"
-            ></label>
-            <label
-              *ngFor="let sub of subSushi"
-              class="sub-category__item"
-              [(ngModel)]="sushiFilter"
-              (ngModelChange)="filterSushi($event)"
-              btnRadio="{{sub}}"
-              tabindex="0"
-              role="button"
-              [innerHTML]="sub"
-            ></label>
-          </div>
-          <ng-container *ngIf="!showSushi">
-            <div *ngFor="let product of sushiProd | slice:0:4" class=" col-12 col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-              <app-product-card
-                [product]="product"
-              ></app-product-card>
-            </div>
-          </ng-container>
-          <ng-container *ngIf="showSushi">
-            <div *ngFor="let product of sushiProd" class=" col-12 col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-              <app-product-card
-                [product]="product"
-              ></app-product-card>
-            </div>
-          </ng-container>
-         <div class="show-button-wrap">
-           <div
-             *ngIf="sushiProd.length > 4"
-             class="show-button"
-             (click)="showHide('sushi')"
-             [innerHTML]="showSushi ? 'Скрыть' : 'Показать все суши'"
-           ></div>
-         </div>
+          <app-product-category  *ngIf="sushiProd.length" class="row w-100" [productByCategory]="sushiProd"></app-product-category>
         </div>
       </div>
     </div>
-    <div class="col-xl-12" *ngIf="rollsProd.length">
-      <div class="row product-wrapper">
-        <h5><a class="anchor" id="rolls" #rolls></a>Роллы</h5>
-        <div class="sub-category">
-          <label
-            class="sub-category__item"
-            [(ngModel)]="rollsFilter"
-            (ngModelChange)="filterRolls($event)"
-            btnRadio="Все"
-            [innerHTML]="'Все'"
-            role = "Button"
-            tabindex="0"
-          ></label>
-          <label
-            *ngFor="let sub of subRolls"
-            class="sub-category__item"
-            [(ngModel)]="rollsFilter"
-            (ngModelChange)="filterRolls($event)"
-            btnRadio="{{sub}}"
-            tabindex="0"
-            role="button"
-            [innerHTML]="sub"
-          ></label>
-        </div>
-        <ng-container *ngIf="!showRolls">
-          <div *ngFor="let product of rollsProd | slice:0:4" class=" col-12 col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-            <app-product-card
-              [product]="product"
-            ></app-product-card>
-          </div>
-        </ng-container>
-        <ng-container *ngIf="showRolls">
-          <div *ngFor="let product of rollsProd" class=" col-12 col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-            <app-product-card
-              [product]="product"
-            ></app-product-card>
-          </div>
-        </ng-container>
-        <div class="show-button-wrap">
-          <div
-            *ngIf="rollsProd.length > 4"
-            class="show-button"
-            (click)="showHide('rolls')"
-            [innerHTML]="showRolls ? 'Скрыть' : 'Показать все роллы'"
-          ></div>
+    <div class="col-xl-12"  [class.show]="!rollsProd.length">
+      <div class="container-fluid">
+        <div class="product-wrapper">
+          <h5><a class="anchor" id="rolls" #rolls></a>Роллы</h5>
+          <app-product-category *ngIf="rollsProd.length" class="row w-100" [productByCategory]="rollsProd"></app-product-category>
         </div>
       </div>
     </div>
-    <div class="col-xl-12" *ngIf="setsProd.length">
-      <div class="row product-wrapper">
-        <h5><a class="anchor" id="sets" #sets></a>Сеты</h5>
-        <div class="sub-category">
-          <label
-            class="sub-category__item"
-            [(ngModel)]="setsFilter"
-            (ngModelChange)="filterSets($event)"
-            btnRadio="Все"
-            [innerHTML]="'Все'"
-            role = "Button"
-            tabindex="0"
-          ></label>
-          <label
-            *ngFor="let sub of subSets"
-            class="sub-category__item"
-            [(ngModel)]="setsFilter"
-            (ngModelChange)="filterSets($event)"
-            btnRadio="{{sub}}"
-            tabindex="0"
-            role="button"
-            [innerHTML]="sub"
-          ></label>
-        </div>
-        <ng-container *ngIf="!showSets">
-          <div *ngFor="let product of setsProd | slice:0:4" class=" col-12 col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-            <app-product-card
-              [product]="product"
-            ></app-product-card>
-          </div>
-        </ng-container>
-        <ng-container *ngIf="showSets">
-          <div *ngFor="let product of setsProd" class=" col-12 col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-            <app-product-card
-              [product]="product"
-            ></app-product-card>
-          </div>
-        </ng-container>
-        <div class="show-button-wrap">
-          <div
-            *ngIf="setsProd.length > 4"
-            class="show-button"
-            (click)="showHide('sets')"
-            [innerHTML]="showSets ? 'Скрыть' : 'Показать все сеты'"
-          ></div>
-        </div>
-      </div>
-      </div>
-    <div class="col-xl-12" *ngIf="drinksProd.length">
-      <div class="row product-wrapper">
-        <h5><a class="anchor" id="drinks" #drinks></a>Напитки</h5>
-        <div class="sub-category">
-          <label
-            class="sub-category__item"
-            [(ngModel)]="drinksFilter"
-            (ngModelChange)="filterDrinks($event)"
-            btnRadio="Все"
-            [innerHTML]="'Все'"
-            role = "Button"
-            tabindex="0"
-          ></label>
-          <label
-            *ngFor="let sub of subDrinks"
-            class="sub-category__item"
-            [(ngModel)]="drinksFilter"
-            (ngModelChange)="filterDrinks($event)"
-            btnRadio="{{sub}}"
-            tabindex="0"
-            role="button"
-            [innerHTML]="sub"
-          ></label>
-        </div>
-        <ng-container *ngIf="!showDrinks">
-          <div *ngFor="let product of drinksProd | slice:0:4" class=" col-12 col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-            <app-product-card
-              [product]="product"
-            ></app-product-card>
-          </div>
-        </ng-container>
-        <ng-container *ngIf="showDrinks">
-          <div *ngFor="let product of drinksProd" class=" col-12 col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-            <app-product-card
-              [product]="product"
-            ></app-product-card>
-          </div>
-        </ng-container>
-        <div class="show-button-wrap">
-          <div
-            *ngIf="drinksProd.length > 4"
-            class="show-button"
-            (click)="showHide('drinks')"
-            [innerHTML]="showDrinks ? 'Скрыть' : 'Показать все напитки'"
-          ></div>
+    <div class="col-xl-12"  [class.show]="!setsProd.length">
+      <div class="container-fluid">
+        <div class="product-wrapper">
+          <h5><a class="anchor" id="sets" #sets></a>Сеты</h5>
+          <app-product-category *ngIf="setsProd.length" class="row w-100" [productByCategory]="setsProd"></app-product-category>
         </div>
       </div>
     </div>
-    <div class="col-xl-12" *ngIf="spicesProd.length">
-      <div class="row product-wrapper">
-        <h5><a class="anchor" id="spices" #spices></a>Специи</h5>
-        <div class="sub-category">
-          <label
-            class="sub-category__item"
-            [(ngModel)]="spicesFilter"
-            (ngModelChange)="filterSpices($event)"
-            btnRadio="Все"
-            [innerHTML]="'Все'"
-            role = "Button"
-            tabindex="0"
-          ></label>
-          <label
-            *ngFor="let sub of subSpices"
-            class="sub-category__item"
-            [(ngModel)]="spicesFilter"
-            (ngModelChange)="filterSpices($event)"
-            btnRadio="{{sub}}"
-            tabindex="0"
-            role="button"
-            [innerHTML]="sub"
-          ></label>
+    <div class="col-xl-12"  [class.show]="!drinksProd.length">
+      <div class="container-fluid">
+        <div class="product-wrapper">
+          <h5><a class="anchor" id="drinks" #drinks></a>Напитки</h5>
+          <app-product-category *ngIf="drinksProd.length" class="row w-100" [productByCategory]="drinksProd"></app-product-category>
         </div>
-        <ng-container *ngIf="!showSpices">
-          <div *ngFor="let product of spicesProd | slice:0:4" class=" col-12 col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-            <app-product-card
-              [product]="product"
-            ></app-product-card>
-          </div>
-        </ng-container>
-        <ng-container *ngIf="showSpices">
-          <div *ngFor="let product of spicesProd" class=" col-12 col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
-            <app-product-card
-              [product]="product"
-            ></app-product-card>
-          </div>
-        </ng-container>
-        <div class="show-button-wrap">
-          <div
-            *ngIf="spicesProd.length > 4"
-            class="show-button"
-            (click)="showHide('spices')"
-            [innerHTML]="showSpices ? 'Скрыть' : 'Показать все специи'"
-          ></div>
+      </div>
+    </div>
+    <div class="col-xl-12"  [class.show]="!spicesProd.length">
+      <div class="container-fluid">
+        <div class="product-wrapper">
+          <h5><a class="anchor" id="spices" #spices></a>Специи</h5>
+          <app-product-category *ngIf="spicesProd.length" class="row w-100" [productByCategory]="spicesProd"></app-product-category>
         </div>
       </div>
     </div>

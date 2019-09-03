@@ -7,7 +7,6 @@ import {AppStateInterface} from '../../store/state/app.state';
 import {GetProducts} from '../../store/actions/products.action';
 import {Product} from '../../_models/product';
 import {environment} from '../../../environments/environment';
-import {log} from 'util';
 
 @Component({
   selector: 'app-home',
@@ -22,24 +21,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   public setsProd: Product[] = [];
   public drinksProd: Product[] = [];
   public spicesProd: Product[] = [];
-
-  public subSushi: string[];
-  public subRolls: string[];
-  public subSets: string[];
-  public subDrinks: string[];
-  public subSpices: string[];
-
-  public sushiFilter: string;
-  public rollsFilter: string;
-  public setsFilter: string;
-  public drinksFilter: string;
-  public spicesFilter: string;
-
-  public showSushi = false;
-  public showRolls = false;
-  public showSets = false;
-  public showDrinks = false;
-  public showSpices = false;
 
   private fragment: string;
   private sub: Subscription;
@@ -100,11 +81,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       this.drinksProd = this.products.filter((item) => item.category === 'Напитки');
       this.spicesProd = this.products.filter((item) => item.category === 'Специи');
 
-      this.subSushi = [...new Set(this.sushiProd.map(item => item.sub_category))];
-      this.subRolls = [...new Set(this.rollsProd.map(item => item.sub_category))];
-      this.subSets = [...new Set(this.setsProd.map(item => item.sub_category))];
-      this.subDrinks = [...new Set(this.drinksProd.map(item => item.sub_category))];
-      this.subSpices = [...new Set(this.spicesProd.map(item => item.sub_category))];
     });
   }
 
@@ -122,68 +98,4 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.sub.unsubscribe();
   }
 
-  filterSushi(event) {
-    if (event !== 'Все') {
-      this.sushiProd = this.products.filter((item) => item.sub_category === event);
-    } else {
-      this.sushiProd = this.products.filter((item) => item.category === 'Суши');
-    }
-  }
-  filterRolls(event) {
-    if (event !== 'Все') {
-      this.rollsProd = this.products.filter((item) => item.sub_category === event);
-    } else {
-      this.rollsProd = this.products.filter((item) => item.category === 'Роллы');
-    }
-  }
-  filterSets(event) {
-    if (event !== 'Все') {
-      this.setsProd = this.products.filter((item) => item.sub_category === event);
-    } else {
-      this.setsProd = this.products.filter((item) => item.category === 'Сеты');
-    }
-  }
-  filterDrinks(event) {
-    if (event !== 'Все') {
-      this.drinksProd = this.products.filter((item) => item.sub_category === event);
-    } else {
-      this.drinksProd = this.products.filter((item) => item.category === 'Напитки');
-    }
-  }
-  filterSpices(event) {
-    if (event !== 'Все') {
-      this.spicesProd = this.products.filter((item) => item.sub_category === event);
-    } else {
-      this.spicesProd = this.products.filter((item) => item.category === 'Специи');
-    }
-  }
-
-  showHide(prodGroup) {
-    switch (prodGroup) {
-      case 'sushi': {
-        this.showSushi = !this.showSushi;
-        break;
-      }
-      case 'rolls': {
-        this.showRolls = !this.showRolls;
-        break;
-      }
-      case 'sets': {
-        this.showSets = !this.showSets;
-        break;
-      }
-      case 'drinks': {
-        this.showDrinks = !this.showDrinks;
-        break;
-      }
-      case 'spices': {
-        this.showSpices = !this.showSpices;
-        break;
-      }
-
-      default: {
-        return;
-      }
-    }
-  }
 }

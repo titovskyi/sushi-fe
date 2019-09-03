@@ -53,6 +53,7 @@ import {ProductsEffects} from "./store/effects/products.effects";
 import { ProductCardComponent } from './components/home/product-card/product-card.component';
 import { ProductPopupComponent } from './components/home/product-popup/product-popup.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { ProductCategoryComponent } from './components/home/product-category/product-category.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,7 +69,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     NewsPopupComponent,
     ProductCardComponent,
     ProductPopupComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ProductCategoryComponent
   ],
   imports: [
     HttpClientModule,

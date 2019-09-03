@@ -19,7 +19,6 @@ export class CommentComponent implements OnInit {
     this.store.dispatch(new GetAllComments());
     this.store.subscribe((res: any) => {
       this.comments = res.comments.comments;
-      console.log(this.comments);
     });
   }
 

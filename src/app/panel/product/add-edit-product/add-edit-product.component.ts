@@ -36,7 +36,7 @@ export class AddEditProductComponent implements OnInit {
       id: [null],
       name: ['', Validators.required],
       category: ['', Validators.required],
-      sub_category: ['', Validators.required],
+      sub_category: [''],
       product_image: [''],
       price: ['', Validators.required],
       consist: ['', Validators.required]
@@ -55,7 +55,7 @@ export class AddEditProductComponent implements OnInit {
             id: [productInfo.id],
             name: [productInfo.name, Validators.required],
             category: [productInfo.category, Validators.required],
-            sub_category: [productInfo.sub_category, Validators.required],
+            sub_category: [productInfo.sub_category],
             product_image: [productInfo.product_image],
             price: [productInfo.price, Validators.required],
             consist: [productInfo.consist, Validators.required]
