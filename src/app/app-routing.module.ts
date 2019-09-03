@@ -8,6 +8,7 @@ import {ContactsComponent} from './components/contacts/contacts.component';
 import {DeliveryComponent} from './components/delivery/delivery.component';
 import {NewsComponent} from './components/news/news.component';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
+import {CartComponent} from './components/cart/cart.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'contacts', component: ContactsComponent},
   {path: 'delivery', component: DeliveryComponent},
   {path: 'news', component: NewsComponent},
+  {path: 'cart', component: CartComponent},
   {path: 'login', component: LoginComponent},
   {
     path: 'panel',

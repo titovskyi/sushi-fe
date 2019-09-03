@@ -1,0 +1,82 @@
+<div class="cart-wrapper">
+  <!--<p>cart works!</p>-->
+  <p *ngIf="!orders.length" class="empty-cart">Ваша корзина пуста!</p>
+
+  <div class="table hide" *ngIf="orders.length">
+    <div class="table__image table__image_header">Название</div>
+    <div class="table__name table__name_header">Название</div>
+    <div class="table__quantity table__quantity_header">Количество</div>
+    <div class="table__price table__price_header">Цена</div>
+    <div class="table__product-total-cost table__product-total-cost_header">Стоимость</div>
+  </div>
+  <hr *ngIf="orders.length" class="hide">
+  <div
+    class="table hide"
+    *ngFor="let order of orders"
+  >
+    <div class="table__image table__image_body">
+      <img src="{{order.product_image}}">
+    </div>
+    <div class="table__name table__name_body">{{order.name}}</div>
+    <div class="table__quantity table__quantity_body">{{order.quantity}}</div>
+    <div class="table__price table__price_body">{{order.price}} ₴</div>
+    <div class="table__product-total-cost table__product-total-cost_body">{{order.price * order.quantity}} ₴</div>
+  </div>
+  <div class="table-small" *ngFor="let order of orders">
+    <div class="table-small__image">
+      <img src="{{order.product_image}}">
+    </div>
+    <div class="table-small__middle">
+      <div class="table-small__name">{{order.name}}</div>
+      <div class="table-small__quantity">{{order.quantity}}</div>
+    </div>
+    <div class="table-small__product-total-cost">{{order.price * order.quantity}} ₴</div>
+  </div>
+  <hr *ngIf="orders.length">
+  <div *ngIf="orders.length" class="total" >Итого: {{getTotalPrice()}} ₴</div>
+
+  <p *ngIf="orders.length" class="form-header">Заполните форму для заказа!</p>
+  <form
+    [formGroup]="clientForm"
+    *ngIf="orders.length"
+    class="client-form"
+    (ngSubmit)="submitOrder()"
+  >
+    <div class="client-form__main">
+      <mat-form-field appearance="outline" class="client-form_normal">
+        <mat-label>Ваше имя</mat-label>
+        <input matInput placeholder="Ваше имя" formControlName="name">
+        <mat-hint>Hint</mat-hint>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="client-form_normal">
+        <mat-label>Ваше телефон</mat-label>
+        <input matInput placeholder="Ваше телефон" formControlName="phone">
+        <mat-hint>Hint</mat-hint>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="client-form_normal">
+        <mat-label>Ваше почта</mat-label>
+        <input matInput placeholder="Ваша почта" formControlName="email">
+        <mat-hint>Hint</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="client-form__address">
+      <mat-form-field appearance="outline" class="client-form_normal">
+        <mat-label>Улица</mat-label>
+        <input matInput placeholder="Улица" formControlName="street">
+        <mat-hint>Hint</mat-hint>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="client-form_small">
+        <mat-label>Дом</mat-label>
+        <input matInput placeholder="Дом" formControlName="house">
+        <mat-hint>Hint</mat-hint>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="client-form_small">
+        <mat-label>Квартира</mat-label>
+        <input matInput placeholder="Квартира" formControlName="flat">
+        <mat-hint>Hint</mat-hint>
+      </mat-form-field>
+    </div>
+    <button type="submit" class="btn link link_light" [disabled]="clientForm.invalid">Оформить заказ</button>
+  </form>
+
+</div>

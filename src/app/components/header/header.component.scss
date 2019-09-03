@@ -19,6 +19,9 @@ hr {
   &__item {
     display: flex;
     align-items: center;
+    cursor: pointer;
+    outline: none;
+
     @media screen and (max-width: 500px) {
       width: 80%;
       justify-content: space-between;
@@ -202,7 +205,7 @@ p {
   }
 
   &_light {
-    color: #ffffff;
+    color: #ffffff !important;
     background: $main-color;
     border-radius: 17px;
     padding: 4px 20px;

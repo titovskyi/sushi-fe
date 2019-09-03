@@ -21,26 +21,28 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatTableModule} from '@angular/material/table';
+import {MatIconModule} from '@angular/material/icon';
 import {JwtInterceptor} from './_helpers/jwt.interceptor';
-import { CommentsComponent } from './components/comments/comments/comments.component';
+import {CommentsComponent} from './components/comments/comments/comments.component';
 import {CommentsEffects} from './store/effects/comments.effects';
-import { ContactsComponent } from './components/contacts/contacts.component';
-import { DeliveryComponent } from './components/delivery/delivery.component';
+import {ContactsComponent} from './components/contacts/contacts.component';
+import {DeliveryComponent} from './components/delivery/delivery.component';
 import {StoreInfoEffects} from './store/effects/store-info.effects';
 import {HeaderComponent} from './components/header/header.component';
 import {FooterComponent} from './components/footer/footer.component';
-import { ButtonsModule } from 'ngx-bootstrap/buttons';
+import {ButtonsModule } from 'ngx-bootstrap/buttons';
 
 
-import { CollapseModule } from 'ngx-bootstrap/collapse';
+import {CollapseModule} from 'ngx-bootstrap/collapse';
 import {AngularFontAwesomeModule} from 'angular-font-awesome'
 
 import localeRu from '@angular/common/locales/ru';
 import {registerLocaleData} from '@angular/common';
 import {NgxPageScrollCoreModule} from 'ngx-page-scroll-core';
-import { NewsComponent } from './components/news/news.component';
+import {NewsComponent} from './components/news/news.component';
 import {StoreNewsEffects} from './store/effects/store-news.effects';
-import { NewsCardComponent } from './components/news/news-card/news-card.component';
+import {NewsCardComponent} from './components/news/news-card/news-card.component';
 
 registerLocaleData(localeRu);
 
@@ -54,6 +56,7 @@ import { ProductCardComponent } from './components/home/product-card/product-car
 import { ProductPopupComponent } from './components/home/product-popup/product-popup.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ProductCategoryComponent } from './components/home/product-category/product-category.component';
+import { CartComponent } from './components/cart/cart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,7 +73,8 @@ import { ProductCategoryComponent } from './components/home/product-category/pro
     ProductCardComponent,
     ProductPopupComponent,
     PageNotFoundComponent,
-    ProductCategoryComponent
+    ProductCategoryComponent,
+    CartComponent
   ],
   imports: [
     HttpClientModule,
@@ -93,6 +97,8 @@ import { ProductCategoryComponent } from './components/home/product-category/pro
     MatButtonModule,
     MatFormFieldModule,
     MatDialogModule,
+    MatTableModule,
+    MatIconModule,
     CollapseModule.forRoot(),
     AngularFontAwesomeModule,
     NgxPageScrollCoreModule,
