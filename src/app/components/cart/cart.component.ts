@@ -5,6 +5,7 @@ import {getOrderedProducts} from '../../store/selectors/products.selectors';
 import {Product} from '../../_models/product';
 import {Observable} from 'rxjs';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ChangeOrderedProductQuantity} from '../../store/actions/products.action';
 
 @Component({
   selector: 'app-cart',
@@ -49,6 +50,23 @@ export class CartComponent implements OnInit {
   }
 
   submitOrder() {
+    console.log(this.orders);
+    console.log(this.clientForm.value);
     console.log('asdasdasd')
+  }
+
+  onChangeQuantity(event, order) {
+    order.quantity = event.target.value;
+    this.store.dispatch(new ChangeOrderedProductQuantity(order));
+  }
+
+  decreaseQuantity(order) {
+    order.quantity--;
+    this.store.dispatch(new ChangeOrderedProductQuantity(order));
+  }
+
+  increaseQuantity(order) {
+    order.quantity++;
+    this.store.dispatch(new ChangeOrderedProductQuantity(order));
   }
 }

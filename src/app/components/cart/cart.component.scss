@@ -1,6 +1,7 @@
 $main-color: #e0112f;
 .cart-wrapper {
   min-height: calc(100vh - 110px - 130px);
+  text-align: center;
 }
 
 .empty-cart {
@@ -36,6 +37,7 @@ $main-color: #e0112f;
   }
 
   &__quantity {
+    display: flex;
     width: 10%;
     text-align: center;
 
@@ -70,10 +72,24 @@ $main-color: #e0112f;
 
   &__image {
     text-align: center;
+    width: 100px;
 
     & > img {
       width: 70px;
     }
+  }
+
+  &__middle {
+    width: 50%;
+  }
+
+  &__quantity {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__product-total-cost {
+    width: 100px;
   }
 
   @media screen and (max-width: 768px) {
@@ -140,5 +156,51 @@ $main-color: #e0112f;
     background: $main-color;
     border-radius: 17px;
     padding: 4px 20px;
+  }
+}
+
+.quantity-input {
+  width: 30px;
+  height: 35px;
+  text-align: center;
+  border: 2px solid #eeeeee;
+  border-left: none;
+  border-right: none;
+  outline: none;
+}
+
+.quantity-action {
+  color: #eeeeee;
+
+  &__decrease {
+    cursor: pointer;
+    width: 30px;
+    height: 35px;
+    padding-top: 2px;
+    font-size: 20px;
+    border: 2px solid #eeeeee;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-right: none;
+
+    &:hover {
+      color: #000000;
+    }
+  }
+
+  &__increase {
+    width: 30px;
+    height: 35px;
+    padding-top: 2px;
+    font-size: 20px;
+    border: 2px solid #eeeeee;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-left: none;
+    cursor: pointer;
+
+    &:hover {
+      color: #000000;
+    }
   }
 }

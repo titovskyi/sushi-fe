@@ -99,6 +99,18 @@ export function productReducer(state = initialProductsState, action: ProductsAct
       };
     }
 
+    case ProductsActionTypes.CHANGE_ORDERED_PRODUCT_QUANTITY: {
+      return {
+        ...state,
+        orderedProducts: state.orderedProducts.map((prod: any) => {
+          if (prod.name === action.payload.name) {
+            prod.quantity = action.payload.quantity;
+          }
+          return prod;
+        })
+      }
+    }
+
     default: {
       return state;
     }

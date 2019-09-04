@@ -15,6 +15,7 @@ export enum ProductsActionTypes {
   LOAD_PRODUCTS_SUCCESS = '[Product] Load Products Success',
   LOAD_PRODUCTS_FAIL = '[Product] Load Products Fail',
   ADD_ORDERED_PRODUCT = '[Product] Add Ordered Product',
+  CHANGE_ORDERED_PRODUCT_QUANTITY = '[Product] Change Ordered Product Quantity',
   ADD_ORDERED_PRODUCT_SUCCESS = '[Product] Add Ordered Product Success',
   ADD_ORDERED_PRODUCT_FAIL = '[Product] Add Ordered Product Fail',
   LOAD_PRODUCT = '[Product] Load Product',
@@ -127,6 +128,12 @@ export class AddOrderedProduct implements Action {
   constructor(public payload: any[]) {}
 }
 
+export class ChangeOrderedProductQuantity implements Action {
+  readonly type = ProductsActionTypes.CHANGE_ORDERED_PRODUCT_QUANTITY;
+
+  constructor(public payload: any) {}
+}
+
 export type ProductsActions =
   GetProducts |
   GetProductsSuccess |
@@ -143,4 +150,5 @@ export type ProductsActions =
   RemoveProduct |
   RemoveProductSuccess |
   RemoveProductFail |
-  AddOrderedProduct;
+  AddOrderedProduct |
+  ChangeOrderedProductQuantity;
