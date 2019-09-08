@@ -7,6 +7,7 @@ import {commentReducer} from './comments.reducer';
 import {storeInfoReducer} from './store-info.reducer';
 import {storeNewsReducer} from './store-news.reducer';
 import {productReducer} from './products.reducer';
+import {errorReducer} from './error.reducers';
 
 export const reducers: ActionReducerMap<AppStateInterface> = {
   router: routerReducer,
@@ -14,5 +15,6 @@ export const reducers: ActionReducerMap<AppStateInterface> = {
   comments: commentReducer,
   info: storeInfoReducer,
   storeNews: storeNewsReducer,
-  products: productReducer
+  products: productReducer,
+  error: errorReducer
 };

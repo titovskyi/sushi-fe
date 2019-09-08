@@ -21,6 +21,7 @@ import {
   UpdateUserFail, RemoveUser, RemoveUserSuccess, RemoveUserFail
 } from '../actions/users.actions';
 import {User} from '../../_models/user';
+import {AddError} from '../../../store/actions/error.actions';
 
 @Injectable()
 export class UsersEffects {
@@ -47,7 +48,7 @@ export class UsersEffects {
     mergeMap((user: User) => {
       return this.userService.createUser(user).pipe(
         map( (newUser: User) => new CreateUserSuccess(newUser)),
-        catchError(err => of(new CreateUserFail(err)))
+        catchError(err => of(new AddError(err)))
       );
     })
   );
@@ -59,7 +60,7 @@ export class UsersEffects {
     mergeMap((user: User) => {
       return this.userService.updateUser(user).pipe(
         map((updateUser: User) => new UpdateUserSuccess(updateUser)),
-        catchError(err => of(new UpdateUserFail(err)))
+        catchError(err => of(new AddError(err)))
       )
     })
   );
@@ -71,7 +72,7 @@ export class UsersEffects {
     mergeMap((userId: number) => {
       return this.userService.removeUser(userId).pipe(
         map((result: any) => new RemoveUserSuccess(userId)),
-        catchError(err => of(new RemoveUserFail(err)))
+        catchError(err => of(new AddError(err)))
       );
     })
   );

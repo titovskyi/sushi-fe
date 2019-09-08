@@ -4,14 +4,29 @@
     <form [formGroup]="commentForm" class="comment-form" (ngSubmit)="createComment()">
       <mat-form-field class="comment-form__item">
         <input matInput placeholder="Ваше имя" formControlName="name">
+        <mat-error *ngIf="commentForm.get('name').invalid && (commentForm.get('name').dirty || commentForm.get('name').touched)">
+            <div *ngIf="commentForm.get('name').errors.required">
+              Укажите ваше имя.
+            </div>
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field class="comment-form__item">
         <input matInput placeholder="Заголовок" formControlName="header">
+        <mat-error *ngIf="commentForm.get('header').invalid && (commentForm.get('header').dirty || commentForm.get('header').touched)">
+          <div *ngIf="commentForm.get('header').errors.required">
+            Укажите заголовок.
+          </div>
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field class="comment-form__item">
-        <textarea matInput placeholder="Оставте коментарий" formControlName="comment"></textarea>
+        <textarea matInput placeholder="Оставте отзыв" formControlName="comment"></textarea>
+        <mat-error *ngIf="commentForm.get('comment').invalid && (commentForm.get('comment').dirty || commentForm.get('comment').touched)">
+          <div *ngIf="commentForm.get('comment').errors.required">
+            Укажите ваш отзыв.
+          </div>
+        </mat-error>
       </mat-form-field>
       <button type="submit" class="btn btn_main-color">Отправить</button>
     </form>

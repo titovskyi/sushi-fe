@@ -22,7 +22,6 @@ export function storeNewsReducer(state = initialStoreNewsState, action: StoreNew
     }
 
     case StoreNewsActionTypes.LOAD_ONESTORENEWS_SUCCESS: {
-      console.log(action.payload, 'one Store news');
       return {
         ...state,
         loading: false,

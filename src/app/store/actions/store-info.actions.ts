@@ -1,7 +1,5 @@
 import {Action} from '@ngrx/store';
 import {StoreInfo} from '../../_models/storeInfo';
-import {User} from '../../panel/_models/user';
-import {UsersActionTypes} from '../../panel/store/actions/users.actions';
 
 export enum StoreInfoActionsTypes {
   LOAD_INFO = '[StoreInfo] Load Store Info',

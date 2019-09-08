@@ -20,7 +20,6 @@ export class LoginSuccess implements Action {
   constructor(
     public payload: AdminUser
   ) {
-    console.log(payload);
     localStorage.setItem('token', payload.token);
     localStorage.setItem('role', payload.role);
     localStorage.setItem('expire', payload.expire);

@@ -65,34 +65,64 @@
       <mat-form-field appearance="outline" class="client-form_normal">
         <mat-label>Ваше имя</mat-label>
         <input matInput placeholder="Ваше имя" formControlName="name">
-        <mat-hint>Hint</mat-hint>
+        <mat-error *ngIf="clientForm.get('name').invalid && (clientForm.get('name').dirty || clientForm.get('name').touched)">
+          <div *ngIf="clientForm.get('name').errors.required">
+            Укажите ваше имя.
+          </div>
+        </mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline" class="client-form_normal">
         <mat-label>Ваше телефон</mat-label>
         <input matInput placeholder="Ваше телефон" formControlName="phone">
-        <mat-hint>Hint</mat-hint>
+        <mat-error *ngIf="clientForm.get('phone').invalid && (clientForm.get('phone').dirty || clientForm.get('phone').touched)">
+          <div *ngIf="clientForm.get('phone').errors.required">
+            Укажите ваш телефон.
+          </div>
+          <div *ngIf="clientForm.get('phone').errors.pattern">
+            Только цифры.
+          </div>
+        </mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline" class="client-form_normal">
         <mat-label>Ваше почта</mat-label>
         <input matInput placeholder="Ваша почта" formControlName="email">
-        <mat-hint>Hint</mat-hint>
+        <mat-error *ngIf="clientForm.get('email').invalid && (clientForm.get('email').dirty || clientForm.get('email').touched)">
+          <div *ngIf="clientForm.get('email').errors.email">
+            Неверный email.
+          </div>
+        </mat-error>
       </mat-form-field>
     </div>
     <div class="client-form__address">
       <mat-form-field appearance="outline" class="client-form_normal">
         <mat-label>Улица</mat-label>
         <input matInput placeholder="Улица" formControlName="street">
-        <mat-hint>Hint</mat-hint>
+        <mat-error *ngIf="clientForm.get('street').invalid && (clientForm.get('street').dirty || clientForm.get('street').touched)">
+          <div *ngIf="clientForm.get('street').errors.required">
+            Укажите улицу доставки.
+          </div>
+        </mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline" class="client-form_small">
         <mat-label>Дом</mat-label>
         <input matInput placeholder="Дом" formControlName="house">
-        <mat-hint>Hint</mat-hint>
+        <mat-error *ngIf="clientForm.get('house').invalid && (clientForm.get('house').dirty || clientForm.get('house').touched)">
+          <div *ngIf="clientForm.get('house').errors.required">
+            Укажите номер дома доставки.
+          </div>
+        </mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline" class="client-form_small">
         <mat-label>Квартира</mat-label>
         <input matInput placeholder="Квартира" formControlName="flat">
-        <mat-hint>Hint</mat-hint>
+        <mat-error *ngIf="clientForm.get('flat').invalid && (clientForm.get('flat').dirty || clientForm.get('flat').touched)">
+          <div *ngIf="clientForm.get('flat').errors.required">
+            Укажите квартиру доставки.
+          </div>
+          <div *ngIf="clientForm.get('flat').errors.pattern">
+            Только цифры.
+          </div>
+        </mat-error>
       </mat-form-field>
     </div>
   </form>
@@ -102,6 +132,7 @@
     type="submit"
     class="btn link link_light"
     [disabled]="clientForm.invalid"
+    *ngIf="orders.length"
   >
     Оформить заказ
   </button>

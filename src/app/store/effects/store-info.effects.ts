@@ -13,6 +13,7 @@ import {
 } from '../actions/store-info.actions';
 import {catchError, map, mergeMap} from 'rxjs/operators';
 import {StoreInfo} from '../../_models/storeInfo';
+import {AddError} from '../actions/error.actions';
 
 @Injectable()
 export class StoreInfoEffects {
@@ -39,7 +40,7 @@ export class StoreInfoEffects {
     mergeMap((info: StoreInfo) => {
       return this.storeInfoService.updateStoreInfo(info).pipe(
         map((updateInfo: StoreInfo) => new UpdateStoreInfoSuccess(updateInfo)),
-        catchError((err) => of(new UpdateStoreInfoFail(err)))
+        catchError((err) => of(new AddError(err)))
       );
     })
   );

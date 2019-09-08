@@ -15,7 +15,10 @@ export class NewsPopupComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.data);
+  }
+
+  onCloseClick() {
+    this.dialogRef.close();
   }
 
 }

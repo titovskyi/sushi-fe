@@ -29,7 +29,7 @@ export class CartComponent implements OnInit {
       phone: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       email: ['', Validators.email],
       street: ['', Validators.required],
-      house: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      house: ['', Validators.required],
       flat: ['', [Validators.required, Validators.pattern('^[0-9]*$')]]
     });
 

@@ -13,6 +13,7 @@ import {
 } from "../actions/products.action";
 import {catchError, map, mergeMap} from "rxjs/operators";
 import {Product} from "../../_models/product";
+import {AddError} from '../actions/error.actions';
 
 @Injectable()
 export class ProductsEffects {
@@ -39,7 +40,7 @@ export class ProductsEffects {
     mergeMap((productId: number) => {
       return this.productService.getProduct(productId).pipe(
         map((product: Product) => new GetProductSuccess(product)),
-        catchError((err) => of(new GetProductFail(err)))
+        catchError((err) => of(new AddError(err)))
       );
     })
   );
@@ -51,7 +52,7 @@ export class ProductsEffects {
     mergeMap((product: Product) => {
       return this.productService.createProduct(product).pipe(
         map((newProduct: Product) => new CreateProductSuccess(newProduct)),
-        catchError((err) => of(new CreateProductFail(err)))
+        catchError((err) => of(new AddError(err)))
       );
     })
   );
@@ -64,7 +65,7 @@ export class ProductsEffects {
     mergeMap((currentProduct: Product) => {
       return this.productService.updateProduct(currentProduct).pipe(
         map((prod: Product) => new CreateProductSuccess(prod)),
-        catchError((err) => of(new CreateProductFail(err)))
+        catchError((err) => of(new AddError(err)))
       );
     })
   );
@@ -77,7 +78,7 @@ export class ProductsEffects {
     mergeMap((productId: any) => {
       return this.productService.removeProduct(productId).pipe(
         map((result: any) => new RemoveProductSuccess(productId)),
-        catchError((err) => of(new RemoveProductFail(err)))
+        catchError((err) => of(new AddError(err)))
       );
     })
   );

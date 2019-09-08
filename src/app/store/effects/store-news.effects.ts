@@ -14,6 +14,7 @@ import {
 } from '../actions/store-news.action';
 import {catchError, map, mergeMap} from 'rxjs/operators';
 import {StoreNews} from '../../_models/storeNews';
+import {AddError} from '../actions/error.actions';
 
 @Injectable()
 export class StoreNewsEffects {
@@ -40,7 +41,7 @@ export class StoreNewsEffects {
     mergeMap((storeNewsId: number) => {
       return this.storeNewsService.getOneNews(storeNewsId).pipe(
         map((oneStoreNews: StoreNews) => new GetOneNewsSuccess(oneStoreNews)),
-        catchError((err) => of(new GetOneNewsFail(err)))
+        catchError((err) => of(new AddError(err)))
       );
     })
   );
@@ -53,7 +54,7 @@ export class StoreNewsEffects {
     mergeMap((storeNews: StoreNews) => {
       return this.storeNewsService.createStoreNews(storeNews).pipe(
         map((newStoreNews: StoreNews) => new CreateNewsSuccess(newStoreNews)),
-        catchError((err) => of(new CreateNewsFail(err)))
+        catchError((err) => of(new AddError(err)))
       );
     })
   );
@@ -65,7 +66,7 @@ export class StoreNewsEffects {
     mergeMap((storeNews: StoreNews) => {
       return this.storeNewsService.updateStoreNews(storeNews).pipe(
         map((updatedStoreNews: StoreNews) => new UpdateNewsSuccess(updatedStoreNews)),
-        catchError((err) => of(new UpdateNewsFail(err)))
+        catchError((err) => of(new AddError(err)))
       );
     })
   );
@@ -77,7 +78,7 @@ export class StoreNewsEffects {
     mergeMap((storeNewsId: number) => {
       return this.storeNewsService.removeNews(storeNewsId).pipe(
         map((result: any) => new RemoveNewsSuccess(storeNewsId)),
-        catchError((err) => of(new RemoveNewsFail(err)))
+        catchError((err) => of(new AddError(err)))
       );
     })
   );

@@ -20,7 +20,7 @@ export class JwtInterceptor implements HttpInterceptor {
     const expireTime = this.authService.getExpiration();
 
     // @ts-ignore
-    if (Date.now() - expireTime > 3600000) {
+    if (this.authService.getRole() && Date.now() - expireTime > 3600000) {
       localStorage.clear();
       this.router.navigateByUrl('/login');
     }

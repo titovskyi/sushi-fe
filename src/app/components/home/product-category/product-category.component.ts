@@ -26,9 +26,7 @@ export class ProductCategoryComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.productByCategory);
     this.filterValues = [...new Set(this.productByCategory.map(item => item.sub_category))];
-    console.log(this.filterValues);
     this.filterProducts(this.filterValue);
   }
 

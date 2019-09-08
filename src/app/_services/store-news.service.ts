@@ -26,7 +26,6 @@ export class StoreNewsService {
   }
 
   updateStoreNews(storeNews: StoreNews): Observable<StoreNews> {
-    console.log(storeNews);
     return this.http.patch<StoreNews>(`${environment.STORE_NEWS}/${storeNews.id}`, storeNews);
   }
 

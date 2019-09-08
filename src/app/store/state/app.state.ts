@@ -12,6 +12,7 @@ export interface AppStateInterface {
   info: StoreInfoStateInterface;
   storeNews: StoreNewsStateInterface;
   products: ProductStateInterface;
+  error: {error: string};
 }
 
 export const initialAppState: AppStateInterface = {
@@ -19,7 +20,8 @@ export const initialAppState: AppStateInterface = {
   comments: initialCommentState,
   info: initialStoreInfoState,
   storeNews: initialStoreNewsState,
-  products: initialProductsState
+  products: initialProductsState,
+  error: {error: ''}
 };
 
 export function getInitialState(): AppStateInterface {

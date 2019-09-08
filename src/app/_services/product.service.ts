@@ -10,70 +10,15 @@ import {StoreNews} from "../_models/storeNews";
 })
 export class ProductService {
 
-  // private products: Product[] = [
-  //   {
-  //     id: 1,
-  //     header: 'Первый товар',
-  //     productImage: 'first-product.jpg',
-  //     price: 100,
-  //     consist: 'Суши - Нигири - 30г'
-  //   },
-  //   {
-  //     id: 2,
-  //     header: 'Первый товар',
-  //     productImage: 'first-product.jpg',
-  //     price: 100,
-  //     consist: 'Суши - Нигири - 30г'
-  //   },
-  //   {
-  //     id: 3,
-  //     header: 'Первый товар',
-  //     productImage: 'first-product.jpg',
-  //     price: 100,
-  //     consist: 'Суши - Нигири - 30г'
-  //   },
-  //   {
-  //     id: 4,
-  //     header: 'Первый товар',
-  //     productImage: 'first-product.jpg',
-  //     price: 100,
-  //     consist: 'Суши - Нигири - 30г'
-  //   },
-  //   {
-  //     id: 5,
-  //     header: 'Первый товар',
-  //     productImage: 'first-product.jpg',
-  //     price: 100,
-  //     consist: 'Суши - Нигири - 30г'
-  //   },
-  //   {
-  //     id: 6,
-  //     header: 'Первый товар',
-  //     productImage: 'first-product.jpg',
-  //     price: 100,
-  //     consist: 'Суши - Нигири - 30г'
-  //   },
-  //   {
-  //     id: 7,
-  //     header: 'Первый товар',
-  //     productImage: 'first-product.jpg',
-  //     price: 100,
-  //     consist: 'Суши - Нигири - 30г'
-  //   }
-  // ];
-
   constructor(
     private http: HttpClient
   ) { }
 
   getProducts(): Observable<Product[]> {
-    // console.log(this.products);
-    // return of(this.products);
     return this.http.get<Product[]>(`${environment.PRODUCT}`);
   }
 
   getProduct(productId: number): Observable<Product> {
-    // return of(this.fakeNews.find((item) => item.id === newsId));
     return this.http.get<Product>(`${environment.PRODUCT}/${productId}`);
   }
 
@@ -82,7 +27,6 @@ export class ProductService {
   }
 
   updateProduct(product: Product): Observable<Product> {
-    console.log(product);
     return this.http.patch<Product>(`${environment.PRODUCT}/${product.id}`, product);
   }
 

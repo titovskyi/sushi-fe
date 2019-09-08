@@ -12,6 +12,7 @@ import {
 } from '../actions/comments.actions';
 import {catchError, map, mergeMap} from 'rxjs/operators';
 import {Action} from '@ngrx/store';
+import {AddError} from '../actions/error.actions';
 
 @Injectable()
 export class CommentsEffects {
@@ -40,7 +41,7 @@ export class CommentsEffects {
     mergeMap((comment: any) => {
       return this.commentService.createComment(comment).pipe(
         map((newComment: any) => new CreateCommentSuccess(newComment)),
-        catchError(err => of(new CreateCommentFail(err)))
+        catchError(err => of(new AddError(err)))
       );
     })
   );
@@ -53,7 +54,7 @@ export class CommentsEffects {
     mergeMap((commentId: number) => {
       return this.commentService.removeComment(commentId).pipe(
         map((result: any) => new RemoveCommentSuccess(commentId)),
-        catchError(err => of(new RemoveCommentFail(err)))
+        catchError(err => of(new AddError(err)))
       );
     })
   );

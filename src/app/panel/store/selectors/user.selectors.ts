@@ -9,7 +9,7 @@ const getUsersState = createFeatureSelector<AppStateInterface>(
 export const getUsers = createSelector(
   getUsersState,
   (state: AppStateInterface) => {
-    console.log(state, 'asdasd');
+    // console.log(state, 'asdasd');
   }
 );
 //

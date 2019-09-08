@@ -21,7 +21,6 @@ export class ProductPopupComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.data);
     this.store.subscribe((res) => {
       this.orderedProducts = res.products.orderedProducts;
     });
@@ -40,6 +39,10 @@ export class ProductPopupComponent implements OnInit {
     }
 
     this.store.dispatch(new AddOrderedProduct(this.orderedProducts));
+  }
+
+  onCloseClick() {
+    this.dialogRef.close();
   }
 
 }

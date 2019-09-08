@@ -57,6 +57,7 @@ import { ProductPopupComponent } from './components/home/product-popup/product-p
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ProductCategoryComponent } from './components/home/product-category/product-category.component';
 import { CartComponent } from './components/cart/cart.component';
+import { ErrorPopupComponent } from './components/error-popup/error-popup.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,7 +75,8 @@ import { CartComponent } from './components/cart/cart.component';
     ProductPopupComponent,
     PageNotFoundComponent,
     ProductCategoryComponent,
-    CartComponent
+    CartComponent,
+    ErrorPopupComponent
   ],
   imports: [
     HttpClientModule,
@@ -112,7 +114,8 @@ import { CartComponent } from './components/cart/cart.component';
   ],
   entryComponents: [
     NewsPopupComponent,
-    ProductPopupComponent
+    ProductPopupComponent,
+    ErrorPopupComponent
   ],
   bootstrap: [AppComponent]
 })
