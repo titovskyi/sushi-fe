@@ -10,9 +10,9 @@ import {
   GetProductsFail,
   GetProductsSuccess, GetProductSuccess,
   ProductsActionTypes, RemoveProduct, RemoveProductFail, RemoveProductSuccess
-} from "../actions/products.action";
-import {catchError, map, mergeMap} from "rxjs/operators";
-import {Product} from "../../_models/product";
+} from '../actions/products.action';
+import {catchError, map, mergeMap} from 'rxjs/operators';
+import {Product} from '../../_models/product';
 import {AddError} from '../actions/error.actions';
 
 @Injectable()

@@ -16,10 +16,10 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class AddEditNewsComponent implements OnInit {
   public newsForm: FormGroup;
   public imagePath: any;
+  public newsId: string;
   public uploadedFile: File;
 
   private fileName: string;
-  private newsId: string;
   private prevImage: any;
 
   constructor(
@@ -85,6 +85,6 @@ export class AddEditNewsComponent implements OnInit {
   }
 
   getSafeUrl(imageName) {
-    return this.domSanitizer.bypassSecurityTrustUrl(`${environment.API}/uploads/${imageName}`);
+    return this.domSanitizer.bypassSecurityTrustUrl(`${environment.API}${imageName}`);
   }
 }

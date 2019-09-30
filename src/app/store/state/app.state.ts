@@ -4,6 +4,7 @@ import {CommentStateInterface, initialCommentState} from './comment.state';
 import {initialStoreInfoState, StoreInfoStateInterface} from './store-info.state';
 import {initialStoreNewsState, StoreNewsStateInterface} from './store-news.state';
 import {initialProductsState, ProductStateInterface} from './product.state';
+import {initialPosterState, PosterStateInterface} from './poster.state';
 
 export interface AppStateInterface {
   router?: RouterReducerState;
@@ -13,6 +14,7 @@ export interface AppStateInterface {
   storeNews: StoreNewsStateInterface;
   products: ProductStateInterface;
   error: {error: string};
+  poster: PosterStateInterface;
 }
 
 export const initialAppState: AppStateInterface = {
@@ -21,7 +23,8 @@ export const initialAppState: AppStateInterface = {
   info: initialStoreInfoState,
   storeNews: initialStoreNewsState,
   products: initialProductsState,
-  error: {error: ''}
+  error: {error: ''},
+  poster: initialPosterState
 };
 
 export function getInitialState(): AppStateInterface {

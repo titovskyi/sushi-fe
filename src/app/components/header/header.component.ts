@@ -58,7 +58,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   public getLogo() {
     if (this.info.logo) {
-      return `url(${environment.API}/uploads/${this.info.logo})`;
+      return `url(${environment.API}${this.info.logo})`;
     }
   }
 

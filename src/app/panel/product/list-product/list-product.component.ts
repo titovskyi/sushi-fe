@@ -30,7 +30,7 @@ export class ListProductComponent implements OnInit {
   }
 
   getSafeUrl(imageName) {
-    return this.domSanitizer.bypassSecurityTrustUrl(`${environment.API}/uploads/${imageName}`);
+    return this.domSanitizer.bypassSecurityTrustUrl(`${environment.API}${imageName}`);
   }
 
   removeProduct(productId) {

@@ -4,7 +4,7 @@ import {LOCALE_ID, NgModule} from '@angular/core';
 import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
 
-import {reducers} from './store/reducers/app.reducers';
+import {REDUCER_TOKEN, reducers} from './store/reducers/app.reducers';
 import {AdminUserEffect} from './store/effects/admin-user.effects';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -33,7 +33,6 @@ import {HeaderComponent} from './components/header/header.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {ButtonsModule } from 'ngx-bootstrap/buttons';
 
-
 import {CollapseModule} from 'ngx-bootstrap/collapse';
 import {AngularFontAwesomeModule} from 'angular-font-awesome'
 
@@ -51,13 +50,14 @@ registerLocaleData(localeRu);
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { NewsPopupComponent } from './components/news/news-popup/news-popup.component';
-import {ProductsEffects} from "./store/effects/products.effects";
+import {ProductsEffects} from './store/effects/products.effects';
 import { ProductCardComponent } from './components/home/product-card/product-card.component';
 import { ProductPopupComponent } from './components/home/product-popup/product-popup.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ProductCategoryComponent } from './components/home/product-category/product-category.component';
 import { CartComponent } from './components/cart/cart.component';
 import { ErrorPopupComponent } from './components/error-popup/error-popup.component';
+import {PosterEffects} from './store/effects/poster.effects';
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,13 +81,14 @@ import { ErrorPopupComponent } from './components/error-popup/error-popup.compon
   imports: [
     HttpClientModule,
     BrowserModule,
-    StoreModule.forRoot({...reducers}),
+    StoreModule.forRoot(REDUCER_TOKEN),
     EffectsModule.forRoot([
       AdminUserEffect,
       CommentsEffects,
       StoreInfoEffects,
       StoreNewsEffects,
-      ProductsEffects
+      ProductsEffects,
+      PosterEffects
     ]),
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -110,7 +111,8 @@ import { ErrorPopupComponent } from './components/error-popup/error-popup.compon
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: LOCALE_ID, useValue: 'RU' }
+    { provide: LOCALE_ID, useValue: 'RU' },
+    { provide: REDUCER_TOKEN, useValue: reducers }
   ],
   entryComponents: [
     NewsPopupComponent,

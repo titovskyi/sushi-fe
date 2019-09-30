@@ -30,7 +30,7 @@ export class ListNewsComponent implements OnInit {
   }
 
   getSafeUrl(imageName) {
-    return this.domSanitizer.bypassSecurityTrustUrl(`${environment.API}/uploads/${imageName}`);
+    return this.domSanitizer.bypassSecurityTrustUrl(`${environment.API}${imageName}`);
   }
 
   removeNews(newsId: number) {

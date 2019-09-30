@@ -1,7 +1,12 @@
 export const environment = {
   production: false,
-  API: 'http://localhost:3000',
-  USER: 'http://localhost:3000/api/user',
-  COMMENT: 'http://localhost:3000/api/comment',
-  STORE_INFO: 'http://localhost:3000/api/info'
+  API: './uploads/',
+  LOGIN: '/api/auth/login',
+  USER: '/api/user',
+  COMMENT: '/api/comment',
+  PRODUCT: '/api/product',
+  STORE_INFO: '/api/info',
+  STORE_NEWS: '/api/news',
+  UPLOAD: '/api/upload',
+  POSTER: '/api/poster'
 };

@@ -37,6 +37,7 @@ export class CartComponent implements OnInit {
     this.store.subscribe((res) => {
       this.orders = res.products.orderedProducts;
     });
+    console.log(this.orders);
   }
 
   getTotalPrice() {

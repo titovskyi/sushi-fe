@@ -14,7 +14,7 @@ import {ErrorPopupComponent} from './components/error-popup/error-popup.componen
 export class AppComponent implements OnInit {
   constructor(
     private store: Store<AppStateInterface>,
-    private router: Router,
+    public router: Router,
     public dialog: MatDialog
   ) {}
 

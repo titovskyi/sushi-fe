@@ -1,16 +1,8 @@
 import {Action} from '@ngrx/store';
 import {Product} from '../../_models/product';
-import {
-  CreateNews, CreateNewsFail, CreateNewsSuccess,
-  GetAllNews,
-  GetAllNewsFail,
-  GetAllNewsSuccess,
-  GetOneNews,
-  GetOneNewsFail,
-  GetOneNewsSuccess, RemoveNews, RemoveNewsFail, RemoveNewsSuccess, UpdateNews, UpdateNewsFail, UpdateNewsSuccess
-} from "./store-news.action";
 
 export enum ProductsActionTypes {
+  SET_PRODUCTS = '[Product] Set Poster Info to Product',
   LOAD_PRODUCTS = '[Product] Load Products',
   LOAD_PRODUCTS_SUCCESS = '[Product] Load Products Success',
   LOAD_PRODUCTS_FAIL = '[Product] Load Products Fail',
@@ -29,7 +21,13 @@ export enum ProductsActionTypes {
   UPDATE_PRODUCT_FAIL = '[Product] Update Product Fail',
   REMOVE_PRODUCT = '[Product] Remove Product',
   REMOVE_PRODUCT_SUCCESS = '[Product] Remove Product Success',
-  REMOVE_PRODUCT_FAIL = '[Product] Remove Product Fail',
+  REMOVE_PRODUCT_FAIL = '[Product] Remove Product Fail'
+}
+
+export class SetProducts implements Action {
+  readonly type = ProductsActionTypes.SET_PRODUCTS;
+
+  constructor(public payload: any[]) {}
 }
 
 export class GetProducts implements Action {
@@ -41,7 +39,7 @@ export class GetProducts implements Action {
 export class GetProductsSuccess implements Action {
   readonly type = ProductsActionTypes.LOAD_PRODUCTS_SUCCESS;
 
-  constructor(public payload: Product[]) {}
+  constructor(public payload: any[]) {}
 }
 
 export class GetProductsFail implements Action {
@@ -135,6 +133,7 @@ export class ChangeOrderedProductQuantity implements Action {
 }
 
 export type ProductsActions =
+  SetProducts |
   GetProducts |
   GetProductsSuccess |
   GetProductsFail |

@@ -27,6 +27,7 @@ import { AddEditNewsComponent } from './admin-news/add-edit-news/add-edit-news.c
 import { ListProductComponent } from './product/list-product/list-product.component';
 import { AddEditProductComponent } from './product/add-edit-product/add-edit-product.component';
 import {AuthGuard} from '../_guards/auth.guard';
+import {MatSelectModule} from '@angular/material/select';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'products'},
@@ -65,7 +66,8 @@ const routes: Routes = [
     MatSidenavModule,
     MatButtonModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule
   ]
 })
 export class PanelModule { }

@@ -7,6 +7,8 @@ import {Store} from '@ngrx/store';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CreateProduct, GetProduct, UpdateProduct} from '../../../store/actions/products.action';
 import {environment} from '../../../../environments/environment';
+import {GetPosterCategories} from '../../../store/actions/poster.action';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-add-edit-product',
@@ -16,12 +18,18 @@ import {environment} from '../../../../environments/environment';
 export class AddEditProductComponent implements OnInit {
   public productForm: FormGroup;
   public imagePath: any;
+  public productId: string;
   public uploadFile: File;
-
+  public poster_categories: any[];
+  public main_categories: any[];
+  public sub_categories: any[];
+  public productInfo: any = {category: ''};
+  public category_value: string;
+  public sub_category_value: string;
 
   private fileName: string;
-  private productId: string;
   private prevImage: any;
+  private sub: Subscription;
 
   constructor(
     private fb: FormBuilder,
@@ -44,27 +52,41 @@ export class AddEditProductComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.store.dispatch(new GetPosterCategories());
+    this.store.subscribe((res) => {
+      this.poster_categories = res.poster.posterCategories;
+      this.main_categories = res.poster.posterCategories.filter((item) => item.parent_category === '0');
+    });
+
     if (this.productId) {
       this.store.dispatch(new GetProduct(Number(this.productId)));
-      this.store.subscribe((res) => {
+      this.sub = this.store.subscribe((res) => {
         if (res.products.currentProduct.id) {
-          const productInfo = res.products.currentProduct;
-          this.prevImage = productInfo.product_image;
+          this.productInfo = res.products.currentProduct;
+          this.prevImage = this.productInfo.product_image;
+          this.category_value = this.productInfo.category;
+          this.sub_category_value = this.productInfo.sub_category;
+
+          this.getSubCategories(this.productInfo.category);
 
           this.productForm = this.fb.group({
-            id: [productInfo.id],
-            name: [productInfo.name, Validators.required],
-            category: [productInfo.category, Validators.required],
-            sub_category: [productInfo.sub_category],
-            product_image: [productInfo.product_image],
-            price: [productInfo.price, Validators.required],
-            consist: [productInfo.consist, Validators.required]
+            id: [this.productInfo.id],
+            name: [this.productInfo.name, Validators.required],
+            category: [this.productInfo.category, Validators.required],
+            sub_category: [this.productInfo.sub_category],
+            product_image: [this.productInfo.product_image],
+            price: [this.productInfo.price, Validators.required],
+            consist: [this.productInfo.consist, Validators.required]
           });
 
-          this.imagePath = this.getSafeUrl(productInfo.product_image);
+          this.imagePath = this.getSafeUrl(this.productInfo.product_image);
         }
       });
     }
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
   fileChange(element) {
@@ -80,7 +102,7 @@ export class AddEditProductComponent implements OnInit {
   }
 
   submitForm() {
-    this.productForm.patchValue({product_image: this.fileName});
+    this.productForm.patchValue({product_image: this.fileName, category: this.category_value, sub_category: this.sub_category_value});
 
     if (this.productId) {
       const newProductInfo = {...this.productForm.value, prev_image: this.prevImage};
@@ -88,11 +110,22 @@ export class AddEditProductComponent implements OnInit {
     } else {
       this.store.dispatch(new CreateProduct(this.productForm.value));
     }
+
     this.router.navigateByUrl('/panel/products');
   }
 
   getSafeUrl(imageName) {
-    return this.domSanitizer.bypassSecurityTrustUrl(`${environment.API}/uploads/${imageName}`);
+    return this.domSanitizer.bypassSecurityTrustUrl(`${environment.API}${imageName}`);
+  }
+
+  getSubCategories(category_value) {
+    const currentCategory = this.poster_categories.find((item) => {
+      return item.category_name === category_value;
+    });
+    console.log(this.poster_categories);
+    if (currentCategory) {
+      this.sub_categories = this.poster_categories.filter((item) => item.parent_category === currentCategory.category_id);
+    }
   }
 
 }

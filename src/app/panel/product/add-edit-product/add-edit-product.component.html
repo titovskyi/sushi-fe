@@ -15,13 +15,26 @@
       <div class="input-group mb-2 mr-sm-2">
         <input id="name" type="text" class="form-control" formControlName="name" placeholder="Название">
       </div>
-      <label for="category">Категория</label>
+      <label>Категория</label>
       <div class="input-group mb-2 mr-sm-2">
-        <input id="category" type="text" class="form-control" formControlName="category" placeholder="Категория">
+        <mat-form-field>
+          <mat-select [(value)]="category_value" (valueChange)="getSubCategories(category_value)" formControlName="category">
+            <mat-option *ngFor="let category of main_categories" [value]="category.category_name">
+              {{category.category_name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
-      <label for="sub_category">Подкатегория</label>
-      <div class="input-group mb-2 mr-sm-2">
-        <input id="sub_category" type="text" class="form-control" formControlName="sub_category" placeholder="Подкатегория">
+      <label *ngIf="category_value">Подкатегория</label>
+      <div class="input-group mb-2 mr-sm-2" *ngIf="category_value">
+<!--        <input id="sub_category" type="text" class="form-control" formControlName="sub_category" placeholder="Подкатегория">-->
+        <mat-form-field>
+          <mat-select [(value)]="sub_category_value" formControlName="sub_category">
+            <mat-option *ngFor="let category of sub_categories" [value]="category.category_name">
+              {{category.category_name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
       <div class="upload">
         <div class="header">
@@ -56,8 +69,7 @@
       <div class="input-group mb-2 mr-sm-2">
         <input id="consist" type="text" class="form-control" formControlName="consist" placeholder="Состав">
       </div>
-
-                                                            <button type="submit" class="btn btn-primary mb-2" [disabled]="productForm.invalid" [innerHTML]="productId ? 'Изменить': 'Добавить'"></button>
+     <button type="submit" class="btn btn-primary mb-2" [disabled]="productForm.invalid" [innerHTML]="productId ? 'Изменить': 'Добавить'"></button>
     </form>
   </mat-sidenav-content>
 </mat-sidenav-container>

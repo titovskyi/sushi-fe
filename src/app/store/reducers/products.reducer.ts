@@ -4,6 +4,14 @@ import {Product} from '../../_models/product';
 
 export function productReducer(state = initialProductsState, action: ProductsActions): ProductStateInterface {
   switch (action.type) {
+    case ProductsActionTypes.SET_PRODUCTS: {
+      console.log(action.payload);
+      return {
+        ...state,
+        products: action.payload
+      };
+    }
+
     case ProductsActionTypes.LOAD_PRODUCTS_SUCCESS : {
       return {
         ...state,

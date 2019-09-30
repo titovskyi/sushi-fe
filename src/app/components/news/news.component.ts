@@ -25,8 +25,8 @@ export class NewsComponent implements OnInit, OnDestroy {
     this.sub = this.store.subscribe((res) => {
       this.storeNews = res.storeNews.storeNews;
       this.storeNews.forEach((item) => {
-        if (item && item.image && item.image.indexOf('http') === -1) {
-          item.image = `${environment.API}/uploads/${item.image}`;
+        if (item && item.image && item.image.indexOf('/') === -1) {
+          item.image = `${environment.API}${item.image}`;
         }
       });
     });

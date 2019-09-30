@@ -4,13 +4,15 @@
 
 export const environment = {
   production: false,
-  API: 'http://localhost:3000',
+  API: 'http://localhost:3000/uploads/',
+  LOGIN: 'http://localhost:3000/api/auth/login',
   USER: 'http://localhost:3000/api/user',
   COMMENT: 'http://localhost:3000/api/comment',
   PRODUCT: 'http://localhost:3000/api/product',
   STORE_INFO: 'http://localhost:3000/api/info',
   STORE_NEWS: 'http://localhost:3000/api/news',
-  UPLOAD: 'http://localhost:3000/api/upload'
+  UPLOAD: 'http://localhost:3000/api/upload',
+  POSTER: 'http://localhost:3000/api/poster'
 };
 
 /*

@@ -4,9 +4,10 @@ import {NavigationService} from '../../_services/navigation.service';
 import {Subscription} from 'rxjs';
 import {Store} from '@ngrx/store';
 import {AppStateInterface} from '../../store/state/app.state';
-import {GetProducts} from '../../store/actions/products.action';
+import {GetProducts, SetProducts} from '../../store/actions/products.action';
 import {Product} from '../../_models/product';
 import {environment} from '../../../environments/environment';
+import {GetPosterProducts} from '../../store/actions/poster.action';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +16,7 @@ import {environment} from '../../../environments/environment';
 })
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   public products: Product[] = [];
+  public posterProducts: any[] = [];
 
   public sushiProd: Product[] = [];
   public rollsProd: Product[] = [];
@@ -67,13 +69,26 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     });
 
     this.store.dispatch(new GetProducts());
+    this.store.dispatch(new GetPosterProducts());
+
     this.store.subscribe((res) => {
       this.products = res.products.products;
+      this.posterProducts = res.poster.posterProducts;
+      console.log(this.products);
       this.products.forEach((item) => {
-        if (item && item.product_image && item.product_image.indexOf('http') === -1) {
-          item.product_image = `${environment.API}/uploads/${item.product_image}`;
+        if (item && item.product_image && item.product_image.indexOf('/') === -1) {
+          item.product_image = `${environment.API}${item.product_image}`;
         }
       });
+      this.posterProducts.forEach((posterItem) => {
+        const mergeProd = this.products.find((prod) => prod.name === posterItem.product_name);
+        if (mergeProd) {
+          const mergeProdIndex = this.products.findIndex((prod) => prod.name === posterItem.product_name);
+          posterItem = {...posterItem, ...mergeProd};
+          this.products[mergeProdIndex] = posterItem;
+        }
+      });
+
 
       this.sushiProd = this.products.filter((item) => item.category === 'Суши');
       this.rollsProd = this.products.filter((item) => item.category === 'Роллы');
@@ -82,10 +97,15 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       this.spicesProd = this.products.filter((item) => item.category === 'Специи');
 
     });
+    this.store.dispatch(new SetProducts(this.products));
+    console.log(this.products, 'this.productsthis.productsthis.productsthis.products');
+
   }
 
   ngOnInit() {
     this.route.fragment.subscribe(fragment => { this.fragment = fragment; });
+
+
   }
 
   ngAfterViewInit(): void {
