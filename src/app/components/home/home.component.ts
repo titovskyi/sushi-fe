@@ -89,7 +89,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         }
       });
 
-
       this.sushiProd = this.products.filter((item) => item.category === 'Суши');
       this.rollsProd = this.products.filter((item) => item.category === 'Роллы');
       this.setsProd = this.products.filter((item) => item.category === 'Сеты');
@@ -97,15 +96,13 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       this.spicesProd = this.products.filter((item) => item.category === 'Специи');
 
     });
-    this.store.dispatch(new SetProducts(this.products));
+
     console.log(this.products, 'this.productsthis.productsthis.productsthis.products');
 
   }
 
   ngOnInit() {
     this.route.fragment.subscribe(fragment => { this.fragment = fragment; });
-
-
   }
 
   ngAfterViewInit(): void {
@@ -115,6 +112,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    console.log('asdasd');
+    //
     this.sub.unsubscribe();
   }
 

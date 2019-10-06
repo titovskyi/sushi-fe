@@ -38,11 +38,11 @@ export class ProductCardComponent implements OnInit {
   orderProduct(product) {
     event.stopPropagation();
 
-    const order = {...product, quantity: 1};
+    const order = {...product, count: 1};
     const presentProductInOrder = this.orderedProducts.findIndex((prod) => prod.name === product.name);
 
     if (presentProductInOrder !== -1) {
-      this.orderedProducts[presentProductInOrder].quantity++;
+      this.orderedProducts[presentProductInOrder].count++;
     } else {
       this.orderedProducts.push(order);
     }

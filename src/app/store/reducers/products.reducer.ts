@@ -112,11 +112,18 @@ export function productReducer(state = initialProductsState, action: ProductsAct
         ...state,
         orderedProducts: state.orderedProducts.map((prod: any) => {
           if (prod.name === action.payload.name) {
-            prod.quantity = action.payload.quantity;
+            prod.count = action.payload.count;
           }
           return prod;
         })
-      }
+      };
+    }
+
+    case ProductsActionTypes.REMOVE_ORDERED_PRODUCTS: {
+      return {
+        ...state,
+        orderedProducts: []
+      };
     }
 
     default: {

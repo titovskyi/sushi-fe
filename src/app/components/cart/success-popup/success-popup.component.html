@@ -1,0 +1,11 @@
+<div class="wrapper">
+  <i class="material-icons">
+    done_outline
+  </i>
+  <div class="success">
+    <p>{{data.response.first_name}},</p>
+    <p>Ваш заказ № {{data.response.incoming_order_id}}</p>
+  </div>
+  <button mat-stroked-button (click)="onOkClick()">OK</button>
+
+</div>

@@ -42,8 +42,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.orderQuantity = 0;
       this.orderPrice = 0;
       res.products.orderedProducts.forEach((product) => {
-        this.orderQuantity += +product.quantity;
-        this.orderPrice += +product.quantity * product.price;
+        this.orderQuantity += +product.count;
+        this.orderPrice += +product.count * product.price;
       });
     });
   }

@@ -24,4 +24,22 @@ export class PosterService {
   getProducts(): Observable<any[]> {
     return this.http.get<any>(`${environment.POSTER}/products`);
   }
+
+  postOrder(order): Observable<any[]> {
+    const prepareOrderProducts = order.products.map((product) => {
+      return  {
+        product_id: product.product_id,
+        count: product.count
+      };
+    });
+
+    return this.http.post<any>(`${environment.POSTER}/order`, {
+      spot_id: order.spot_id,
+      phone: order.phone,
+      first_name: order.first_name,
+      email: order.email,
+      address: order.address,
+      products: prepareOrderProducts
+    });
+  }
 }

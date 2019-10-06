@@ -58,6 +58,8 @@ import { ProductCategoryComponent } from './components/home/product-category/pro
 import { CartComponent } from './components/cart/cart.component';
 import { ErrorPopupComponent } from './components/error-popup/error-popup.component';
 import {PosterEffects} from './store/effects/poster.effects';
+import { SuccessPopupComponent } from './components/cart/success-popup/success-popup.component';
+import { CartErrorPopupComponent } from './components/cart/error-popup/cart-error-popup.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,7 +78,9 @@ import {PosterEffects} from './store/effects/poster.effects';
     PageNotFoundComponent,
     ProductCategoryComponent,
     CartComponent,
-    ErrorPopupComponent
+    ErrorPopupComponent,
+    SuccessPopupComponent,
+    CartErrorPopupComponent
   ],
   imports: [
     HttpClientModule,
@@ -117,7 +121,9 @@ import {PosterEffects} from './store/effects/poster.effects';
   entryComponents: [
     NewsPopupComponent,
     ProductPopupComponent,
-    ErrorPopupComponent
+    ErrorPopupComponent,
+    SuccessPopupComponent,
+    CartErrorPopupComponent
   ],
   bootstrap: [AppComponent]
 })

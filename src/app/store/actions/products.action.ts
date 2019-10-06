@@ -10,6 +10,9 @@ export enum ProductsActionTypes {
   CHANGE_ORDERED_PRODUCT_QUANTITY = '[Product] Change Ordered Product Quantity',
   ADD_ORDERED_PRODUCT_SUCCESS = '[Product] Add Ordered Product Success',
   ADD_ORDERED_PRODUCT_FAIL = '[Product] Add Ordered Product Fail',
+  REMOVE_ORDERED_PRODUCTS = '[Product] Remove Ordered Products',
+  REMOVE_ORDERED_PRODUCTS_SUCCESS = '[Product] Remove Ordered Products Success',
+  REMOVE_ORDERED_PRODUCTS_FAIL = '[Product] Remove Ordered Products Fail',
   LOAD_PRODUCT = '[Product] Load Product',
   LOAD_PRODUCT_SUCCESS = '[Product] Load Product Success',
   LOAD_PRODUCT_FAIL = '[Product] Load Product Fail',
@@ -27,7 +30,9 @@ export enum ProductsActionTypes {
 export class SetProducts implements Action {
   readonly type = ProductsActionTypes.SET_PRODUCTS;
 
-  constructor(public payload: any[]) {}
+  constructor(public payload: any[]) {
+    console.log(this.payload, 'action');
+  }
 }
 
 export class GetProducts implements Action {
@@ -132,6 +137,10 @@ export class ChangeOrderedProductQuantity implements Action {
   constructor(public payload: any) {}
 }
 
+export class RemoveOrderedProducts implements Action {
+  readonly type = ProductsActionTypes.REMOVE_ORDERED_PRODUCTS;
+}
+
 export type ProductsActions =
   SetProducts |
   GetProducts |
@@ -150,4 +159,5 @@ export type ProductsActions =
   RemoveProductSuccess |
   RemoveProductFail |
   AddOrderedProduct |
-  ChangeOrderedProductQuantity;
+  ChangeOrderedProductQuantity |
+  RemoveOrderedProducts;

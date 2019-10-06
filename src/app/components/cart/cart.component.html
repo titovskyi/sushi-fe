@@ -23,14 +23,17 @@
         class="quantity-action quantity-action__decrease"
         (click)="decreaseQuantity(order)"
       >–</span>
-      <input (input)="onChangeQuantity($event, order)" class="quantity-input" type="text" value="{{order.quantity}}">
+      <input
+        (input)="onChangeQuantity($event, order)"
+        class="quantity-input" type="text" value="{{order.count}}"
+      >
       <span
         class="quantity-action quantity-action__increase"
         (click)="increaseQuantity(order)"
       >+</span>
     </div>
     <div class="table__price table__price_body">{{order.price}} ₴</div>
-    <div class="table__product-total-cost table__product-total-cost_body">{{order.price * order.quantity}} ₴</div>
+    <div class="table__product-total-cost table__product-total-cost_body">{{order.price * order.count}} ₴</div>
   </div>
   <div class="table-small" *ngFor="let order of orders">
     <div class="table-small__image">
@@ -43,14 +46,14 @@
           class="quantity-action quantity-action__decrease"
           (click)="decreaseQuantity(order)"
         >–</span>
-        <input (input)="onChangeQuantity($event, order)" class="quantity-input" type="text" value="{{order.quantity}}">
+        <input (input)="onChangeQuantity($event, order)" class="quantity-input" type="text" value="{{order.count}}">
         <span
           class="quantity-action quantity-action__increase"
           (click)="increaseQuantity(order)"
         >+</span>
       </div>
     </div>
-    <div class="table-small__product-total-cost">{{order.price * order.quantity}} ₴</div>
+    <div class="table-small__product-total-cost">{{order.price * order.count}} ₴</div>
   </div>
   <hr *ngIf="orders.length">
   <div *ngIf="orders.length" class="total" >Итого: {{getTotalPrice()}} ₴</div>
@@ -73,13 +76,10 @@
       </mat-form-field>
       <mat-form-field appearance="outline" class="client-form_normal">
         <mat-label>Ваше телефон</mat-label>
-        <input matInput placeholder="Ваше телефон" formControlName="phone">
+        <input matInput placeholder="Ваше телефон" formControlName="phone" value="+380">
         <mat-error *ngIf="clientForm.get('phone').invalid && (clientForm.get('phone').dirty || clientForm.get('phone').touched)">
           <div *ngIf="clientForm.get('phone').errors.required">
             Укажите ваш телефон.
-          </div>
-          <div *ngIf="clientForm.get('phone').errors.pattern">
-            Только цифры.
           </div>
         </mat-error>
       </mat-form-field>
