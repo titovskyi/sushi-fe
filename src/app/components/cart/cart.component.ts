@@ -89,10 +89,12 @@ export class CartComponent implements OnInit {
     this.posterService.postOrder(posterOrder).subscribe((res: any) => {
       if (res.response) {
         this.dialog.open(SuccessPopupComponent, {
+          width: '250px',
           data: res
         });
       } else {
         this.dialog.open(CartErrorPopupComponent, {
+          width: '250px',
           data: res
         });
       }
